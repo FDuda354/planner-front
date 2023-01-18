@@ -1,16 +1,12 @@
-<header>
-  <div>Lgo</div>
-  <div>
-    <button routerLink="">Home</button>
-    <button routerLink="/products">Products</button>
-    <button routerLink="/login">Login</button>
+<app-header flexLayout="column"></app-header>
+<div flexLayout="row">
+  <div fxFlex="20">
+    <app-sidebar fxFlex></app-sidebar>
   </div>
-</header>
-<div>
-  <div>Sidebar</div>
-  <div>
+  <div fxFlex="80" class="content">
     <router-outlet></router-outlet>
   </div>
 </div>
-<footer>footer</footer>
+<app-footer></app-footer>
+
 
