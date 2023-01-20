@@ -1,4 +1,11 @@
 :host{
-  background: #999;
+  background: #292b31;
   padding: 20px;
+  color: #aaa;
+}
+.footerCopy {
+  text-align: center;
+}
+.footerManu{
+  margin-bottom: 15px;
 }
