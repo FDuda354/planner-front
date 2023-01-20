@@ -1,0 +1,24 @@
+:host{
+  display: flex;
+  flex-direction: column;
+}
+.productImage
+{
+  margin-right: 10px;
+}
+.productPrice
+{
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #ff4081;
+}
+.productContent{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  font-size: 15px;
+}
+mat-card{
+  margin-bottom: 15px;
+}
