@@ -1,0 +1,44 @@
+<h1>Product List <button mat-raised-button color="accent" routerLink="/admin/products/add">Add New Product <mat-icon>add</mat-icon> </button> </h1>
+<table mat-table [dataSource]="adminProducts" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id.</th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name</th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef> Category</th>
+    <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Price</th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} {{element.currency}} </td>
+  </ng-container>
+
+<ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button [routerLink]="['/admin/products/update',element.id]">
+        <mat-icon color="primary">edit</mat-icon>
+      </button>
+<!--      <button mat-icon-button (click)="deleteProduct(element.id)">-->
+<!--        <mat-icon>delete</mat-icon>-->
+<!--      </button>-->
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[25, 50, 100]"
+               [pageSize]="25"
+               showFirstLastButtons
+               [length]="totalElements">
+</mat-paginator>
