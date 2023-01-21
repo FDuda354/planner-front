@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FullpageadminComponent } from './fullpageadmin.component';
+import {FullpageadminComponent} from './fullpageadmin.component';
 
 describe('FullpageadminComponent', () => {
   let component: FullpageadminComponent;

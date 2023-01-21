@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FullpageadminComponent} from "./fullpageadmin.component";
 import {AdminComponent} from "../../modules/admin/admin.component";
 import {RouterModule} from "@angular/router";
@@ -10,7 +10,6 @@ import {AdminProductUpdateComponent} from "../../modules/admin/admin-product-upd
 import {ReactiveFormsModule} from "@angular/forms";
 import {AdminProductAddComponent} from "../../modules/admin/admin-product-add/admin-product-add.component";
 import {AdminProductFormComponent} from "../../modules/admin/admin-product-form/admin-product-form.component";
-
 
 
 @NgModule({

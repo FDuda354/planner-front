@@ -1,8 +1,8 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {AdminProduct} from "./adminProduct";
 import {AdminProductService} from "./admin-product.service";
 import {MatPaginator} from "@angular/material/paginator";
-import {map, startWith, switchMap} from "rxjs";
+import {startWith, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-admin-product',
