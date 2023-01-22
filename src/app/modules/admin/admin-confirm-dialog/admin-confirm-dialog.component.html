@@ -1,0 +1,12 @@
+<div fxLayout="column" fxLayoutGap="50px">
+  <div fxLayout="row">
+    <span fxFlex style="text-align: center; font-size: 25px;">{{data.message}}</span>
+    <button mat-icon-button class="closeButton" [mat-dialog-close]="false">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div fxFlex>
+    <button mat-raised-button fxFlex color="warn" [mat-dialog-close]="false">No</button>
+    <button mat-raised-button fxFlex color="primary" [mat-dialog-close]="true">Yes</button>
+  </div>
+</div>

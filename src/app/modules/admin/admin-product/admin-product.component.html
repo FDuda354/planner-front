@@ -27,9 +27,9 @@
       <button mat-icon-button [routerLink]="['/admin/products/update',element.id]">
         <mat-icon color="primary">edit</mat-icon>
       </button>
-<!--      <button mat-icon-button (click)="deleteProduct(element.id)">-->
-<!--        <mat-icon>delete</mat-icon>-->
-<!--      </button>-->
+      <button mat-icon-button (click)="confirmDelete(element.id)">
+        <mat-icon color="warn">delete</mat-icon>
+      </button>
     </td>
   </ng-container>
 

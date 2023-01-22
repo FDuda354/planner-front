@@ -22,3 +22,13 @@
 mat-card{
   margin-bottom: 15px;
 }
+mat-card a{
+
+  text-decoration: none;
+  color: black;
+}
+mat-card a:hover{
+  color: #ff4081;
+}
+
+

@@ -2,10 +2,12 @@
 <mat-card *ngFor="let product of page?.content">
   <div flexLayout="row">
     <div flexLayout="column" fxFlex>
-      <mat-card-title>{{product.name}}</mat-card-title>
+      <mat-card-title><a routerLink="{{'/product/'+product.slug}}">{{product.name}}</a></mat-card-title>
       <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
       <div flexLayout="row">
-        <img src="assets/image-placeholder.png" mat-card-md-image class="productImage">
+        <a routerLink="{{'/product/'+product.slug}}">
+          <img src="assets/image-placeholder.png" mat-card-md-image class="productImage">
+        </a>
         <mat-card-content fxFlex class="productContent">
           <p>{{product.description}}</p>
         </mat-card-content>
@@ -16,7 +18,7 @@
     </div>
   </div>
   <mat-card-actions align="end" fxLayoutGap="10">
-    <button mat-flat-button color="accent">Show</button>
+    <button mat-flat-button color="accent" routerLink="{{'/product/'+product.slug}}">Show</button>
     <button mat-flat-button color="primary">Add to cart</button>
   </mat-card-actions>
 </mat-card>
@@ -25,5 +27,5 @@
                [pageSize]="5"
                [pageSizeOptions]="[5, 10, 25]"
                aria-label="Select page"
-                (page)="onPageEvent($event)">
+               (page)="onPageEvent($event)">
 </mat-paginator>

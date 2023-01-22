@@ -3,6 +3,7 @@ import {AdminProduct} from "./adminProduct";
 import {AdminProductService} from "./admin-product.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {startWith, switchMap} from "rxjs";
+import {AdminConfirmDialogService} from "../admin-confirm-dialog.service";
 
 @Component({
   selector: 'app-admin-product',
@@ -16,7 +17,9 @@ export class AdminProductComponent implements AfterViewInit {
   totalElements: number = 0;
   adminProducts: AdminProduct[] = [];
 
-  constructor(private adminProductService: AdminProductService) { }
+  constructor(private adminProductService: AdminProductService,
+              private adminConfirmDialogService: AdminConfirmDialogService
+  ) { }
 
   ngAfterViewInit(): void {
     this.paginator.page.pipe(
@@ -30,4 +33,15 @@ export class AdminProductComponent implements AfterViewInit {
     });
   }
 
+  confirmDelete(id: number) {
+    this.adminConfirmDialogService.openDialog("Are you sure?")
+      .afterClosed()
+      .subscribe(confirmed => {
+        if (confirmed) {
+          this.adminProductService.deleteProduct(id).subscribe(() => {
+            this.paginator.page.emit();
+          });
+        }
+      });
+  }
 }

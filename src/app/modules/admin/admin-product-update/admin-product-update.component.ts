@@ -15,6 +15,9 @@ export class AdminProductUpdateComponent implements OnInit {
 
   product!: AdminProductUpdate;
   productForm!: FormGroup;
+  imageForm!: FormGroup;
+  requiredFileTypes = ['image/jpeg', 'image/png', 'image/gif'];
+  image: string | null = null;
 
   constructor(
     private router: ActivatedRoute,
@@ -31,10 +34,15 @@ export class AdminProductUpdateComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       description: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       category: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-      price: ['', [Validators.required, Validators.min(0),Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
-      currency: ['PLN', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]]
+      price: ['', [Validators.required, Validators.min(0), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      currency: ['PLN', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]],
+      slug: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]]
     });
     this.getProduct();
+
+    this.imageForm = this.formBuilder.group({
+      file: ['']
+    });
   }
 
   getProduct() {
@@ -52,7 +60,9 @@ export class AdminProductUpdateComponent implements OnInit {
       description: this.productForm.get('description')?.value,
       category: this.productForm.get('category')?.value,
       price: this.productForm.get('price')?.value,
-      currency: this.productForm.get('currency')?.value
+      currency: this.productForm.get('currency')?.value,
+      slug: this.productForm.get('slug')?.value,
+      image: this.image
     } as AdminProductUpdate).subscribe({
       next: product => {
         this.mapFormValues(product)
@@ -65,13 +75,34 @@ export class AdminProductUpdateComponent implements OnInit {
   }
 
   private mapFormValues(product: AdminProductUpdate): void {
-    return this.productForm.setValue({
+     this.productForm.setValue({
       name: product.name,
       description: product.description,
       category: product.category,
       price: product.price,
-      currency: product.currency
-    })
+      currency: product.currency,
+      slug: product.slug
+    });
+    this.image = product.image;
+  }
+
+  uploadFile() {
+    let formData = new FormData();
+    formData.append('file', this.imageForm.get('file')?.value);
+    this.adminProductUpdateService.uploadImage(formData).subscribe(
+      result => {
+        this.image = result.fileName;
+        this.snackBar.open("Image uploaded", "OK", {duration: 3000});
+      });
+  }
+
+  onFileChange(event: any) {
+
+    if (event.target.files.length > 0) {
+      this.imageForm.patchValue({
+        file: event.target.files[0]
+      })
+    }
   }
 }
 

@@ -5,5 +5,6 @@ export interface Product
     description: string;
     price: number;
     currency: string;
+    slug: string;
 
 }
