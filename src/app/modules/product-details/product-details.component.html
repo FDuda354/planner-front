@@ -2,16 +2,16 @@
   <div fxLayout="row" fxFlex fxLayoutGap="20">
     <div>
       <img *ngIf="!productDetails.image" src="/assets/image-placeholder.png" width="350">
-      <img *ngIf="productDetails.image" src="{{'/api/admin/data/productImage/'+ productDetails?.image}}" width="350">
+      <img *ngIf="productDetails.image" src="{{'/api/admin/data/productImage/'+ productDetails.image}}" width="350">
     </div>
     <div fxLayout="column" fxFlex>
-      <h1>{{productDetails?.name}}</h1>
-      <small>{{productDetails?.category}}</small>
+      <h1>{{productDetails.name}}</h1>
+      <small>{{productDetails.category}}</small>
       <div class="description">
-        {{productDetails?.fullDescription}}
+        {{productDetails.fullDescription}}
       </div>
       <div fxLayout="row" fxFlexAlign="end">
-        <span class="price">{{productDetails?.price}} {{productDetails?.currency}}</span>
+        <span class="price">{{productDetails.price}} {{productDetails.currency}}</span>
       </div>
       <button mat-flat-button color="warn">Add to cart</button>
     </div>

@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {FormGroup} from "@angular/forms";
+import {AdminCategoryNameDto} from "./adminCategoryNamesDto";
+import {FormCategoryService} from "./form-category.service";
 
 @Component({
   selector: 'app-admin-product-form',
@@ -16,6 +18,7 @@ import {FormGroup} from "@angular/forms";
                   </mat-error>
               </div>
           </mat-form-field>
+
           <mat-form-field appearance="fill">
               <mat-label>Friendly URL</mat-label>
               <input matInput placeholder="Input URL" formControlName="slug">
@@ -27,6 +30,7 @@ import {FormGroup} from "@angular/forms";
                   </mat-error>
               </div>
           </mat-form-field>
+
           <mat-form-field appearance="fill">
               <mat-label>Product Description</mat-label>
               <input matInput rows="10" placeholder="Input new product description"
@@ -41,25 +45,25 @@ import {FormGroup} from "@angular/forms";
                   </mat-error>
               </div>
           </mat-form-field>
+
           <mat-form-field appearance="fill">
               <mat-label>Full description</mat-label>
               <textarea matInput rows="20" placeholder="Input full description"
                         formControlName="fullDescription"></textarea>
           </mat-form-field>
+
           <mat-form-field appearance="fill">
               <mat-label>Category</mat-label>
-
-              <input matInput placeholder="Input new product category" formControlName="category">
-              <div *ngIf="category?.invalid && (category?.dirty || category?.touched)">
-                  <mat-error *ngIf="category?.errors?.['required']">Product category is required</mat-error>
-                  <mat-error *ngIf="category?.errors?.['minlength']">Product category must be at least 3 characters
-                      long
-                  </mat-error>
-                  <mat-error *ngIf="category?.errors?.['maxlength']">Product category must be at most 255 characters
-                      long
-                  </mat-error>
-              </div>
+              <mat-select formControlName="categoryId">
+                  <mat-option *ngFor="let category of categories" [value]="category.id">
+                      {{category.name}}
+                  </mat-option>
+              </mat-select>
+            <div *ngIf="categoryId?.invalid && (categoryId?.dirty || categoryId?.touched)">
+              <mat-error *ngIf="categoryId?.errors?.['required']">Product category is required</mat-error>
+            </div>
           </mat-form-field>
+
 
           <mat-form-field appearance="fill">
               <mat-label>Price</mat-label>
@@ -91,9 +95,18 @@ import {FormGroup} from "@angular/forms";
 export class AdminProductFormComponent implements OnInit {
 
   @Input() parentForm!: FormGroup;
-  constructor() { }
+
+  categories: Array<AdminCategoryNameDto> = [];
+  constructor(private formCategoryService: FormCategoryService) { }
 
   ngOnInit(): void {
+    this.getCategoryNames();
+  }
+
+  getCategoryNames() {
+    this.formCategoryService.getCategories().subscribe(categories => {
+      this.categories = categories;
+    });
   }
 
   get name() {
@@ -104,8 +117,8 @@ export class AdminProductFormComponent implements OnInit {
     return this.parentForm.get('description');
   }
 
-  get category() {
-    return this.parentForm.get('category');
+  get categoryId() {
+    return this.parentForm.get('categoryId');
   }
 
   get price() {
