@@ -32,7 +32,8 @@ export class AdminProductUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-      description: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
+      description: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      fullDescription: ['', [Validators.minLength(3), Validators.maxLength(1000)]],
       category: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
       price: ['', [Validators.required, Validators.min(0), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
       currency: ['PLN', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]],
@@ -53,11 +54,10 @@ export class AdminProductUpdateComponent implements OnInit {
 
   submit() {
     let id = Number(this.router.snapshot.params['id']);
-    // this.adminProductUpdateService.updateProduct(id,this.productForm.value) jak encja z formularza odpowiada encji na backendize
-    //inaczej mapujemy
     this.adminProductUpdateService.updateProduct(id, {
       name: this.productForm.get('name')?.value,
       description: this.productForm.get('description')?.value,
+      fullDescription: this.productForm.get('fullDescription')?.value,
       category: this.productForm.get('category')?.value,
       price: this.productForm.get('price')?.value,
       currency: this.productForm.get('currency')?.value,
@@ -75,9 +75,10 @@ export class AdminProductUpdateComponent implements OnInit {
   }
 
   private mapFormValues(product: AdminProductUpdate): void {
-     this.productForm.setValue({
+    this.productForm.setValue({
       name: product.name,
       description: product.description,
+      fullDescription: product.fullDescription,
       category: product.category,
       price: product.price,
       currency: product.currency,

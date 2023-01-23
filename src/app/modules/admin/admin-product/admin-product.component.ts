@@ -13,9 +13,10 @@ import {AdminConfirmDialogService} from "../admin-confirm-dialog.service";
 export class AdminProductComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  displayedColumns: string[] = ["id", "name", "price", "category", "actions"];
+  displayedColumns: string[] = ["id","image", "name", "price", "category", "actions"];
   totalElements: number = 0;
   adminProducts: AdminProduct[] = [];
+
 
   constructor(private adminProductService: AdminProductService,
               private adminConfirmDialogService: AdminConfirmDialogService

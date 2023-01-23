@@ -16,21 +16,21 @@ import {FormGroup} from "@angular/forms";
                   </mat-error>
               </div>
           </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Friendly URL</mat-label>
-          <input matInput placeholder="Input URL" formControlName="slug">
-          <div *ngIf="slug?.invalid && (slug?.dirty || slug?.touched)">
-            <mat-error *ngIf="slug?.errors?.['required']">URL is required</mat-error>
-            <mat-error *ngIf="slug?.errors?.['minlength']">URL must be at least 3 characters long
-            </mat-error>
-            <mat-error *ngIf="slug?.errors?.['maxlength']">URL must be at most 255 characters long
-            </mat-error>
-          </div>
-        </mat-form-field>
+          <mat-form-field appearance="fill">
+              <mat-label>Friendly URL</mat-label>
+              <input matInput placeholder="Input URL" formControlName="slug">
+              <div *ngIf="slug?.invalid && (slug?.dirty || slug?.touched)">
+                  <mat-error *ngIf="slug?.errors?.['required']">URL is required</mat-error>
+                  <mat-error *ngIf="slug?.errors?.['minlength']">URL must be at least 3 characters long
+                  </mat-error>
+                  <mat-error *ngIf="slug?.errors?.['maxlength']">URL must be at most 255 characters long
+                  </mat-error>
+              </div>
+          </mat-form-field>
           <mat-form-field appearance="fill">
               <mat-label>Product Description</mat-label>
-              <textarea matInput rows="10" placeholder="Input new product description"
-                        formControlName="description"></textarea>
+              <input matInput rows="10" placeholder="Input new product description"
+                     formControlName="description">
               <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
                   <mat-error *ngIf="description?.errors?.['required']">Product description is required</mat-error>
                   <mat-error *ngIf="description?.errors?.['minlength']">Product description must be at least 3
@@ -41,9 +41,14 @@ import {FormGroup} from "@angular/forms";
                   </mat-error>
               </div>
           </mat-form-field>
-
+          <mat-form-field appearance="fill">
+              <mat-label>Full description</mat-label>
+              <textarea matInput rows="20" placeholder="Input full description"
+                        formControlName="fullDescription"></textarea>
+          </mat-form-field>
           <mat-form-field appearance="fill">
               <mat-label>Category</mat-label>
+
               <input matInput placeholder="Input new product category" formControlName="category">
               <div *ngIf="category?.invalid && (category?.dirty || category?.touched)">
                   <mat-error *ngIf="category?.errors?.['required']">Product category is required</mat-error>
@@ -114,5 +119,10 @@ export class AdminProductFormComponent implements OnInit {
   get slug() {
     return this.parentForm.get('slug');
   }
+
+  get fullDescription() {
+    return this.parentForm.get('fullDescription');
+  }
+
 
 }
