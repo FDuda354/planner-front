@@ -8,9 +8,9 @@ describe('FullpageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FullpageComponent ]
+      declarations: [FullpageComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FullpageComponent);
     component = fixture.componentInstance;

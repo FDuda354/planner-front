@@ -7,6 +7,7 @@ import {RouterModule} from "@angular/router";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {SharedModule} from "../../shared/shared.module";
 import {ProductDetailsComponent} from "../../modules/product-details/product-details.component";
+import {CategoryComponent} from "../../modules/category/category.component";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {ProductDetailsComponent} from "../../modules/product-details/product-det
     DefaultComponent,
     HomeComponent,
     ProductComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CategoryComponent
   ],
   imports: [
     CommonModule,
@@ -23,4 +25,5 @@ import {ProductDetailsComponent} from "../../modules/product-details/product-det
     SharedModule
   ]
 })
-export class DefaultModule { }
+export class DefaultModule {
+}

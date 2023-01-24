@@ -18,4 +18,5 @@ import {LoginComponent} from "../../modules/login/login.component";
     SharedModule
   ]
 })
-export class FullpageModule { }
+export class FullpageModule {
+}

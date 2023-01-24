@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ProductDetails} from "./model/productDetails";
 import {Observable} from "rxjs";
@@ -8,7 +8,8 @@ import {Observable} from "rxjs";
 })
 export class ProductDetailsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getProductDetails(slug: string): Observable<ProductDetails> {
     return this.http.get<ProductDetails>(`/api/product/${slug}`);

@@ -34,7 +34,7 @@ export class AdminProductAddComponent implements OnInit {
       description: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
       fullDescription: [''],
       categoryId: ['', [Validators.required]],
-      price: ['', [Validators.required, Validators.min(0),Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      price: ['', [Validators.required, Validators.min(0), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
       currency: ['PLN', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]],
       slug: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]]
     });
@@ -64,6 +64,7 @@ export class AdminProductAddComponent implements OnInit {
       }
     });
   }
+
   uploadFile() {
     let formData = new FormData();
     formData.append('file', this.imageForm.get('file')?.value);

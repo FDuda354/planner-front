@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AdminProductUpdate} from "./model/adminProductUpdate";
 import {AdminProductUpdateService} from "./admin-product-update.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -20,7 +20,8 @@ export class AdminProductUpdateComponent implements OnInit {
   image: string | null = null;
 
   constructor(
-    private router: ActivatedRoute,
+    private route: ActivatedRoute,
+    private router: Router,
     private adminProductUpdateService: AdminProductUpdateService,
     private adminMessageService: AdminMessageService,
     private formBuilder: FormBuilder,
@@ -47,13 +48,13 @@ export class AdminProductUpdateComponent implements OnInit {
   }
 
   getProduct() {
-    let id = Number(this.router.snapshot.params['id']);
+    let id = Number(this.route.snapshot.params['id']);
     this.adminProductUpdateService.getProduct(id)
       .subscribe(product => this.mapFormValues(product));
   }
 
   submit() {
-    let id = Number(this.router.snapshot.params['id']);
+    let id = Number(this.route.snapshot.params['id']);
     this.adminProductUpdateService.updateProduct(id, {
       name: this.productForm.get('name')?.value,
       description: this.productForm.get('description')?.value,
@@ -66,7 +67,8 @@ export class AdminProductUpdateComponent implements OnInit {
     } as AdminProductUpdate).subscribe({
       next: product => {
         this.mapFormValues(product)
-        this.snackBar.open("Product updated", "OK", {duration: 3000});
+        this.router.navigate(['/admin/products'])
+          .then(() => this.snackBar.open("Product updated", "OK", {duration: 3000}));
       },
       error: err => {
         this.adminMessageService.addSpringErrors(err.error);

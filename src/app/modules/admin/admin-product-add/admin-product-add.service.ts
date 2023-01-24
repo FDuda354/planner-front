@@ -9,9 +9,10 @@ import {UploadResponse} from "../admin-product-update/model/uploadResponse";
 })
 export class AdminProductAddService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  saveNewProduct(newProduct: AdminProductUpdate):Observable<AdminProductUpdate> {
+  saveNewProduct(newProduct: AdminProductUpdate): Observable<AdminProductUpdate> {
     return this.http.post<AdminProductUpdate>("/api/admin/product", newProduct);
   }
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Subject} from "rxjs";
 
 @Injectable({
@@ -8,7 +8,9 @@ export class AdminMessageService {
 
   messages: Array<string> = [];
   subject = new Subject<Array<string>>();
-  constructor() { }
+
+  constructor() {
+  }
 
   add(message: string): void {
     this.clear();
@@ -24,7 +26,7 @@ export class AdminMessageService {
     this.clear();
     if (error.errors?.length > 0) {
       for (let field in error.errors) {
-        this.messages.push(error.errors[field].field +" -> "+error.errors[field].defaultMessage);
+        this.messages.push(error.errors[field].field + " -> " + error.errors[field].defaultMessage);
       }
     } else {
       this.messages.push(error.message);

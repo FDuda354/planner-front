@@ -8,9 +8,9 @@ describe('FullpageadminComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FullpageadminComponent ]
+      declarations: [FullpageadminComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FullpageadminComponent);
     component = fixture.componentInstance;

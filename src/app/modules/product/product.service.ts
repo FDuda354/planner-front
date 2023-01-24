@@ -9,7 +9,8 @@ import {Page} from "../../shared/model/page";
 })
 export class ProductService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getProducts(page: number, size: number): Observable<Page<Product>> {
     return this.http.get<Page<Product>>(`/api/products?page=${page}&size=${size}`);

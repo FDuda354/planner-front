@@ -8,14 +8,12 @@ import {FullpageModule} from "./layouts/fullpage/fullpage.module";
 import {FullpageadminModule} from "./layouts/fullpageadmin/fullpageadmin.module";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
-import { AdminMessageComponent } from './modules/admin/admin-message/admin-message.component';
-import { AdminConfirmDialogComponent } from './modules/admin/admin-confirm-dialog/admin-confirm-dialog.component';
-import { ProductDetailsComponent } from './modules/product-details/product-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent
+
   ],
   imports: [
     BrowserModule,
@@ -29,4 +27,5 @@ import { ProductDetailsComponent } from './modules/product-details/product-detai
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

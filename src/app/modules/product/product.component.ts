@@ -9,11 +9,12 @@ import {PageEvent} from "@angular/material/paginator";
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit{
+export class ProductComponent implements OnInit {
 
   page!: Page<Product>;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {
+  }
 
   ngOnInit(): void {
     this.getProducts();
@@ -28,7 +29,7 @@ export class ProductComponent implements OnInit{
   }
 
   private getProductPage(page: number, size: number) {
-    this.productService.getProducts(page,size).subscribe(data => {
+    this.productService.getProducts(page, size).subscribe(data => {
       this.page = data;
     });
   }

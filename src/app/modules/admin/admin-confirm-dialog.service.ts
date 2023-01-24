@@ -10,7 +10,7 @@ export class AdminConfirmDialogService {
   constructor(private dialog: MatDialog) {
   }
 
-  openDialog(message: string): MatDialogRef<AdminConfirmDialogComponent,Boolean> {
+  openDialog(message: string): MatDialogRef<AdminConfirmDialogComponent, Boolean> {
     return this.dialog.open(AdminConfirmDialogComponent, {
       width: '400px',
       data: {

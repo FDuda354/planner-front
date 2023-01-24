@@ -1,13 +1,15 @@
-.messages{
-  padding:10px;
+.messages {
+  padding: 10px;
   margin-bottom: 10px;
   background-color: #C03F3F;
   font-size: 18px;
   color: white;
 }
-.messages div{
+
+.messages div {
   margin-bottom: 4px;
 }
-.messages button{
+
+.messages button {
   color: white;
 }

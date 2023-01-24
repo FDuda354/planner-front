@@ -1,11 +1,13 @@
-:host{
+:host {
   background: #292b31;
   padding: 20px;
   color: #aaa;
 }
+
 .footerCopy {
   text-align: center;
 }
-.footerManu{
+
+.footerManu {
   margin-bottom: 15px;
 }
