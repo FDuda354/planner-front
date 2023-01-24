@@ -13,10 +13,8 @@ import {AdminCategoryService} from "../admin-category/admin-category.service";
         <input matInput placeholder="Input new product name" formControlName="name">
         <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
           <mat-error *ngIf="name?.errors?.['required']">Product name is required</mat-error>
-          <mat-error *ngIf="name?.errors?.['minlength']">Product name must be at least 3 characters long
-          </mat-error>
-          <mat-error *ngIf="name?.errors?.['maxlength']">Product name must be at most 255 characters long
-          </mat-error>
+          <mat-error *ngIf="name?.errors?.['minlength']">Product name must be at least 3 characters long</mat-error>
+          <mat-error *ngIf="name?.errors?.['maxlength']">Product name must be at most 255 characters long</mat-error>
         </div>
       </mat-form-field>
 
@@ -25,10 +23,8 @@ import {AdminCategoryService} from "../admin-category/admin-category.service";
         <input matInput placeholder="Input URL" formControlName="slug">
         <div *ngIf="slug?.invalid && (slug?.dirty || slug?.touched)">
           <mat-error *ngIf="slug?.errors?.['required']">URL is required</mat-error>
-          <mat-error *ngIf="slug?.errors?.['minlength']">URL must be at least 3 characters long
-          </mat-error>
-          <mat-error *ngIf="slug?.errors?.['maxlength']">URL must be at most 255 characters long
-          </mat-error>
+          <mat-error *ngIf="slug?.errors?.['minlength']">URL must be at least 3 characters long</mat-error>
+          <mat-error *ngIf="slug?.errors?.['maxlength']">URL must be at most 255 characters long</mat-error>
         </div>
       </mat-form-field>
 
