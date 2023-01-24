@@ -5,5 +5,4 @@ export interface Category {
   description: string;
   slug: string;
 
-
 }
