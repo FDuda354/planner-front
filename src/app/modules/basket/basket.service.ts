@@ -19,4 +19,12 @@ export class BasketService {
   addProductToBasket(basketId: number, basketItem: any): Observable<BasketSummary>{
     return this.http.put<BasketSummary>("/api/basket/"+basketId, basketItem);
   }
+
+  updateBasket(basketId: number, items: any[]): Observable<BasketSummary>{
+    return this.http.put<BasketSummary>("/api/basket/"+basketId+"/update", items);
+  }
+
+  removeBasketItem(id: any): Observable<void> {
+    return this.http.delete<void>("/api/basketItems/"+id);
+  }
 }
