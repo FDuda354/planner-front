@@ -5,6 +5,7 @@ import {BasketSummary} from "./model/basketSummary";
 import {CookieService} from "ngx-cookie-service";
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {BasketSummaryItem} from "./model/basketSummaryItem";
+import {BasketIconService} from "../common/service/basket-icon.service";
 
 
 @Component({
@@ -20,6 +21,7 @@ export class BasketComponent implements OnInit{
     private route: ActivatedRoute,
     private basketService: BasketService,
     private cookieService: CookieService,
+    private basketIconService: BasketIconService,
     private router: Router,
     private formBuilder: FormBuilder,
   ) { }
@@ -43,6 +45,7 @@ export class BasketComponent implements OnInit{
         .subscribe(summary => {
           this.basketSummary = summary;
           this.patchFormItems();
+          this.basketIconService.setBasketIconCount(summary.items.length);
         });
     }
   }
@@ -54,6 +57,7 @@ export class BasketComponent implements OnInit{
       .subscribe(summary => {
         this.basketSummary = summary;
         this.patchFormItems();
+        this.basketIconService.setBasketIconCount(summary.items.length);
         this.cookieService.delete('basketId');
         this.cookieService.set('basketId', summary.id.toString(),this.expirationDate(3));
         this.router.navigate(['/basket']);
