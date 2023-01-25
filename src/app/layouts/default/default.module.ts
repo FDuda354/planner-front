@@ -9,6 +9,7 @@ import {SharedModule} from "../../shared/shared.module";
 import {ProductDetailsComponent} from "../../modules/product-details/product-details.component";
 import {CategoryComponent} from "../../modules/category/category.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {BasketComponent} from "../../modules/basket/basket.component";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     HomeComponent,
     ProductComponent,
     ProductDetailsComponent,
-    CategoryComponent
+    CategoryComponent,
+    BasketComponent
   ],
   imports: [
     CommonModule,

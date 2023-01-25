@@ -15,6 +15,7 @@ export class ProductDetailsComponent implements OnInit {
 
   productDetails!: ProductDetails;
   reviewForm!: FormGroup;
+
   constructor(
     private productDetailsService: ProductDetailsService,
     private route: ActivatedRoute,
@@ -26,8 +27,8 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getProductDetails();
     this.reviewForm = this.formBuilder.group({
-      authorName: ['',[Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
-      content: ['',[Validators.required, Validators.minLength(3), Validators.maxLength(600)]]
+      authorName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
+      content: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(600)]]
     });
     console.log(this.productDetails.reviews)
   }
@@ -49,6 +50,8 @@ export class ProductDetailsComponent implements OnInit {
         .subscribe(review => {
           this.snackBar.open('Review added', 'OK', {duration: 3000, panelClass: "snack-bar-bg-color-ok"});
           this.reviewForm.reset();
+          this.getProductDetails();
+          console.log(this.productDetails.reviews)
         })
     }
   }

@@ -1,6 +1,6 @@
 import {Category} from "./category";
-import {Product} from "../../product/model/product";
-import {Page} from "../../../shared/model/page";
+import {Product} from "../../common/model/product";
+import {Page} from "../../common/model/page";
 
 export interface CategoryProducts {
   category: Category;

@@ -37,7 +37,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
 
   getProductsInCategory(page: number, size: number) {
     let slug = this.route.snapshot.params['slug'];
-    this.categoryService.getProductsInCategory(slug,page,size).subscribe(
+    this.categoryService.getProductsInCategory(slug, page, size).subscribe(
       categoryProducts => {
         this.categoryProducts = categoryProducts;
       }

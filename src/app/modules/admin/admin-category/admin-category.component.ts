@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AdminCategoryNameDto} from "../common/dto/adminCategoryNamesDto";
 import {AdminCategoryService} from "./admin-category.service";
-import {AdminConfirmDialogService} from "../admin-confirm-dialog.service";
+import {AdminConfirmDialogService} from "../common/service/admin-confirm-dialog.service";
 
 @Component({
   selector: 'app-admin-category',

@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
-import {AdminMessageService} from "../../admin-message.service";
+import {AdminMessageService} from "../../common/service/admin-message.service";
 import {AdminCategoryService} from "../admin-category.service";
 import {AdminCategory} from "../model/adminCategory";
 

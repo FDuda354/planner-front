@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {AdminProductUpdate} from "../admin-product-update/model/adminProductUpdate";
+import {AdminProductUpdate} from "../model/adminProductUpdate";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AdminProductAddService} from "./admin-product-add.service";
-import {AdminMessageService} from "../admin-message.service";
+import {AdminMessageService} from "../../common/service/admin-message.service";
+import {AdminProductImageService} from "../admin-product-image.service";
 
 @Component({
   selector: 'app-admin-product-add',
@@ -23,6 +24,7 @@ export class AdminProductAddComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private adminProductAddService: AdminProductAddService,
+    private adminProductImageService: AdminProductImageService,
     private snackBar: MatSnackBar,
     private adminMessageService: AdminMessageService
   ) {
@@ -68,7 +70,7 @@ export class AdminProductAddComponent implements OnInit {
   uploadFile() {
     let formData = new FormData();
     formData.append('file', this.imageForm.get('file')?.value);
-    this.adminProductAddService.uploadImage(formData).subscribe(
+    this.adminProductImageService.uploadImage(formData).subscribe(
       result => {
         this.image = result.fileName;
         this.snackBar.open("Image uploaded", "OK", {duration: 3000});

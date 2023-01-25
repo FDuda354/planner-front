@@ -1,52 +1,67 @@
-<div fxLayout="column">
-  <div fxLayout="row" fxFlex fxLayoutGap="20">
-    <div>
-      <img *ngIf="!productDetails.image" src="/assets/image-placeholder.png" width="350">
-      <img *ngIf="productDetails.image" src="{{'/api/admin/data/productImage/'+ productDetails.image}}" width="350">
-    </div>
-    <div fxLayout="column" fxFlex>
-      <h1>{{productDetails.name}}</h1>
-      <small>{{productDetails.category}}</small>
-      <div class="description">
-        {{productDetails.fullDescription}}
+<div>
+  <div fxLayout="column">
+    <div fxLayout="row" fxFlex fxLayoutGap="20">
+      <div>
+        <img *ngIf="!productDetails.image" src="/assets/image-placeholder.png" width="350">
+        <img *ngIf="productDetails.image" src="{{'/api/admin/data/productImage/'+ productDetails.image}}" width="350">
       </div>
-      <div fxLayout="row" fxFlexAlign="end">
-        <span class="price">{{productDetails.price}} {{productDetails.currency}}</span>
+      <div fxLayout="column" fxFlex>
+        <h1>{{productDetails.name}}</h1>
+        <small>{{productDetails.category}}</small>
+        <div class="description">
+          {{productDetails.fullDescription}}
+        </div>
+        <div fxLayout="row" fxFlexAlign="end">
+          <span class="price">{{productDetails.price}} {{productDetails.currency}}</span>
+        </div>
+        <button mat-flat-button color="warn" routerLink="/basket" [queryParams]="{productId: productDetails?.id}" >Add to cart</button>
       </div>
-      <button mat-flat-button color="warn">Add to cart</button>
     </div>
   </div>
+
   <h2>Reviews</h2>
-  <div>
-    <div *ngFor="let review of productDetails?.reviews" class="review">
-      <div>Author: {{review.authorName}}</div>
-      <div>{{review.content}}</div>
+  <div fxLayout="row" fxFlexAlign="start">
+    <div fxFlex="50%">
+      <mat-card *ngFor="let review of productDetails?.reviews" class="example-card">
+        <mat-card-title-group>
+          <mat-card-title>{{review.authorName}}</mat-card-title>
+          <!--        TODO: add user rating-->
+          <mat-card-subtitle>Rating</mat-card-subtitle>
+          <!--        TODO: add user photo-->
+          <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+        </mat-card-title-group>
+        <mat-card-content>
+          {{review.content}}
+        </mat-card-content>
+      </mat-card>
     </div>
-  </div>
-  <h3>Add New Reviews</h3>
-  <div>
-    <form [formGroup]="reviewForm" (submit)="submit()" fxLayout="column" fxFlex="40%">
-      <mat-form-field appearance="fill">
-        <mat-label>Autor</mat-label>
-        <input matInput placeholder="Enter your name" formControlName="authorName">
-        <div *ngIf="authorName?.invalid && (authorName?.dirty || authorName?.touched)" class="errorMessage">
-          <mat-error *ngIf="authorName?.errors?.['required']">Author is required</mat-error>
-          <mat-error *ngIf="authorName?.errors?.['minlength']">Author name length must be at least 3 characters</mat-error>
-          <mat-error *ngIf="authorName?.errors?.['maxlength']">Author name length must be less than 60 characters</mat-error>
-        </div>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Add review</mat-label>
-        <textarea matInput rows="10" placeholder="Your review" formControlName="content"></textarea>
-        <div *ngIf="content?.invalid && (content?.dirty || content?.touched)" class="errorMessage">
-          <mat-error *ngIf="content?.errors?.['required']">Review is required</mat-error>
-          <mat-error *ngIf="content?.errors?.['minlength']">Review length must be at least 3 characters</mat-error>
-          <mat-error *ngIf="content?.errors?.['maxlength']">Review length must be less than 600 characters</mat-error>
-        </div>
-      </mat-form-field>
-      <div fxLayout="colum" fxFlexAlign="end" fxLayoutGap="10">
-        <button mat-flat-button color="primary" [disabled]="!reviewForm.valid">Add Review</button>
-      </div>
-    </form>
+    <div fxFlex="50%">
+      <h3>Add New Reviews</h3>
+      <form [formGroup]="reviewForm" (submit)="submit()" fxLayout="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Autor</mat-label>
+          <input matInput placeholder="Enter your name" formControlName="authorName">
+          <div *ngIf="authorName?.invalid && (authorName?.dirty || authorName?.touched)" class="errorMessage">
+            <mat-error *ngIf="authorName?.errors?.['required']">Author is required</mat-error>
+            <mat-error *ngIf="authorName?.errors?.['minlength']">Author name length must be at least 3 characters
+            </mat-error>
+            <mat-error *ngIf="authorName?.errors?.['maxlength']">Author name length must be less than 60 characters
+            </mat-error>
+          </div>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Add review</mat-label>
+          <textarea matInput rows="10" placeholder="Your review" formControlName="content"></textarea>
+          <div *ngIf="content?.invalid && (content?.dirty || content?.touched)" class="errorMessage">
+            <mat-error *ngIf="content?.errors?.['required']">Review is required</mat-error>
+            <mat-error *ngIf="content?.errors?.['minlength']">Review length must be at least 3 characters</mat-error>
+            <mat-error *ngIf="content?.errors?.['maxlength']">Review length must be less than 600 characters</mat-error>
+          </div>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="reviewForm.invalid">Submit</button>
+      </form>
+    </div>
   </div>
 </div>
+
+
