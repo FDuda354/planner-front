@@ -4,6 +4,9 @@ import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {filter, Subscription} from "rxjs";
 import {CategoryProducts} from "./model/categoryProducts";
 import {PageEvent} from "@angular/material/paginator";
+import {BasketService} from "../basket/basket.service";
+import {CookieService} from "ngx-cookie-service";
+import {BasketIconService} from "../common/service/basket-icon.service";
 
 @Component({
   selector: 'app-category',
@@ -18,7 +21,10 @@ export class CategoryComponent implements OnInit, OnDestroy {
   constructor(
     private categoryService: CategoryService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private basketService: BasketService,
+    private cookieService: CookieService,
+    private basketIconService: BasketIconService
   ) {
   }
 
@@ -48,6 +54,22 @@ export class CategoryComponent implements OnInit, OnDestroy {
   onPageEvent(event: PageEvent) {
     this.getProductsInCategory(event.pageIndex, event.pageSize);
   }
+
+//TODO: usunac jak beda problemy i dodawac przez link {
+  addProduct(id: number) {
+    let basketId = Number(this.cookieService.get('basketId'));
+    this.basketService.addProductToBasket(basketId, {productId: id, quantity: 1})
+      .subscribe(summary => {
+        this.basketIconService.setBasketIconCount(summary.items.length);
+        this.cookieService.delete('basketId');
+        this.cookieService.set('basketId', summary.id.toString(),this.expirationDate(3));
+      });
+  }
+
+  private expirationDate(days: number) {
+    return new Date(Date.now() + days * 24 * 60 * 60 * 1000);
+  }
+//TODO: }
 }
 
 

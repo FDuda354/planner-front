@@ -1,10 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductDetails} from "./model/productDetails";
 import {ProductDetailsService} from "./product-details.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Review} from "./model/review";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ProductService} from "../product/product.service";
+import {BasketService} from "../basket/basket.service";
+import {CookieService} from "ngx-cookie-service";
+import {BasketIconService} from "../common/service/basket-icon.service";
+import {BasketComponent} from "../basket/basket.component";
 
 @Component({
   selector: 'app-product-details',
@@ -20,7 +25,11 @@ export class ProductDetailsComponent implements OnInit {
     private productDetailsService: ProductDetailsService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private basketService: BasketService,
+    private cookieService: CookieService,
+    private basketIconService: BasketIconService,
+    private router: Router
   ) {
   }
 
@@ -63,4 +72,21 @@ export class ProductDetailsComponent implements OnInit {
   get content() {
     return this.reviewForm.get('content');
   }
+
+//TODO: usunac jak beda problemy i dodawac przez link {
+  addProduct(id: number) {
+    let basketId = Number(this.cookieService.get('basketId'));
+    this.basketService.addProductToBasket(basketId, {productId: id, quantity: 1})
+      .subscribe(summary => {
+        this.basketIconService.setBasketIconCount(summary.items.length);
+        this.cookieService.delete('basketId');
+        this.cookieService.set('basketId', summary.id.toString(),this.expirationDate(3));
+      });
+    this.router.navigate(['/products']);
+  }
+
+  private expirationDate(days: number) {
+    return new Date(Date.now() + days * 24 * 60 * 60 * 1000);
+  }
+//TODO: }
 }
