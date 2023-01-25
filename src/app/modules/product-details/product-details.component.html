@@ -3,7 +3,7 @@
     <div fxLayout="row" fxFlex fxLayoutGap="20">
       <div>
         <img *ngIf="!productDetails.image" src="/assets/image-placeholder.png" width="350">
-        <img *ngIf="productDetails.image" src="{{'/api/admin/data/productImage/'+ productDetails.image}}" width="350">
+        <img *ngIf="productDetails.image" src="{{'/api/data/productImage/'+ productDetails.image}}" width="350">
       </div>
       <div fxLayout="column" fxFlex>
         <h1>{{productDetails.name}}</h1>
@@ -14,7 +14,7 @@
         <div fxLayout="row" fxFlexAlign="end">
           <span class="price">{{productDetails.price}} {{productDetails.currency}}</span>
         </div>
-        <button mat-flat-button color="warn" routerLink="/basket" [queryParams]="{productId: productDetails?.id}" >Add to cart</button>
+        <button mat-flat-button color="warn" routerLink="/basket" [queryParams]="{productId: productDetails.id}" >Add to cart</button>
       </div>
     </div>
   </div>

@@ -10,7 +10,7 @@
     <div class="cart-col-1">
       <a routerLink="{{'/products/' + item?.product?.slug}}">
         <img *ngIf="!item?.product?.image" src="/assets/image-placeholder.png" width="100">
-        <img *ngIf="item?.product?.image" src="{{'/api/data/productImages/' + item?.product?.image}}" width="100">
+        <img *ngIf="item?.product?.image" src="{{'/api/data/productImage/' + item?.product?.image}}" width="100">
       </a>
     </div>
     <div class="cart-col-2">{{item?.product?.name}}</div>

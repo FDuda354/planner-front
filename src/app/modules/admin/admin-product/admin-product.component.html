@@ -15,7 +15,7 @@
     <td mat-cell *matCellDef="let element">
       <div flexLayout="row">
         <img *ngIf="!element.image" src="/assets/image-placeholder.png" mat-card-lg-image class="productAdminImage">
-        <img *ngIf="element.image" src="{{'/api/admin/data/productImage/'+ element?.image}}" mat-card-md-image
+        <img *ngIf="element.image" src="{{'/api/data/productImage/'+ element?.image}}" mat-card-md-image
              class="productAdminImage">
       </div>
     </td>

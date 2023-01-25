@@ -15,4 +15,8 @@ export class BasketService {
   getBasket(id: number): Observable<BasketSummary>{
     return this.http.get<BasketSummary>("/api/basket/"+id);
   }
+
+  addProductToBasket(basketId: number, basketItem: any): Observable<BasketSummary>{
+    return this.http.put<BasketSummary>("/api/basket/"+basketId, basketItem);
+  }
 }

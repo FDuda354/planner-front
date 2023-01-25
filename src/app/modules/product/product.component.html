@@ -7,7 +7,7 @@
       <div flexLayout="row">
         <a routerLink="{{'/product/'+product.slug}}">
           <img *ngIf="!product.image" src="/assets/image-placeholder.png" mat-card-md-image class="productImage">
-          <img *ngIf="product.image" src="{{'/api/admin/data/productImage/'+ product?.image}}" mat-card-md-image
+          <img *ngIf="product.image" src="{{'/api/data/productImage/'+ product?.image}}" mat-card-md-image
                class="productImage">
         </a>
         <mat-card-content fxFlex class="productContent">
@@ -21,7 +21,7 @@
   </div>
   <mat-card-actions align="end" fxLayoutGap="10">
     <button mat-flat-button color="accent" routerLink="{{'/product/'+product.slug}}">Show</button>
-    <button mat-flat-button color="primary">Add to cart</button>
+    <button mat-flat-button color="primary" routerLink="/basket" [queryParams]="{productId: product.id}" >Add to cart</button>
   </mat-card-actions>
 </mat-card>
 <mat-paginator *ngIf="page && page.totalElements > 0"

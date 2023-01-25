@@ -9,6 +9,7 @@ import {FullpageadminModule} from "./layouts/fullpageadmin/fullpageadmin.module"
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
 import { BasketComponent } from './modules/basket/basket.component';
+import {CookieService} from "ngx-cookie-service";
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { BasketComponent } from './modules/basket/basket.component';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
