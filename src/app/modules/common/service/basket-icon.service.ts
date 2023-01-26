@@ -12,4 +12,8 @@ export class BasketIconService {
   setBasketIconCount(count: Number) {
     this.subject.next(count);
   }
+
+  setDefaultBasketIcon() {
+    this.subject.next(0);
+  }
 }

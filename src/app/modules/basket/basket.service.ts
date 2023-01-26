@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {BasketSummary} from "./model/basketSummary";
+import {BasketSummary} from "../common/model/basket/basketSummary";
+import {BasketCommonService} from "../common/service/basket-common.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,11 @@ export class BasketService {
 
   constructor(
     private http: HttpClient,
+    private basketCommonService: BasketCommonService,
   ) { }
 
   getBasket(id: number): Observable<BasketSummary>{
-    return this.http.get<BasketSummary>("/api/basket/"+id);
+    return this.basketCommonService.getBasket(id);
   }
 
   addProductToBasket(basketId: number, basketItem: any): Observable<BasketSummary>{

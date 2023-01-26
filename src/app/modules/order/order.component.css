@@ -1,3 +1,17 @@
+.orderForm{
+  width: 400px;
+}
+.orderButton{
+  background: #f0c14b;
+  border: 1px solid;
+  margin-top: 12px;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+  width: 30%;
+  padding: 5px 0;
+  font-size: 18px;
+  border-radius: 3px;
+}
 .cart-hcol-1,
 .cart-hcol-2,
 .cart-hcol-3,
@@ -19,7 +33,6 @@
   width: 100px;
   text-align: center;
 }
-
 .cart-hcol-2, .cart-col-2{
   min-width: 250px;
 }
@@ -39,20 +52,27 @@
   padding: 11px;
   border-bottom: 1px solid #eee;
 }
-.quantityInput{
-  width: 25px;
-  text-align: center;
+
+.orderSummary {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
-.orderButton{
-  background: #f0c14b;
-  border: 1px solid;
-  margin-top: 12px;
-  border-color: #a88734 #9c7e31 #846a29;
-  color: #111;
-  width: 30%;
-  padding: 5px 0;
-  font-size: 18px;
-  border-radius: 3px;
-  cursor: pointer;
+.orderSummary > div {
+  margin-bottom: 10px;
+}
+
+.orderSummary > div:first-child {
+  font-weight: bold;
+}
+
+.orderSummary > div:nth-child(2) {
+  color: gray;
+}
+
+.orderSummary > div:nth-child(4) {
+  font-weight: bold;
+  font-size: 1.2em;
 }

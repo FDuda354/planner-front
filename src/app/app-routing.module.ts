@@ -22,6 +22,7 @@ import {
 } from "./modules/admin/admin-category/admin-category-update/admin-category-update.component";
 import {CategoryComponent} from "./modules/category/category.component";
 import {BasketComponent} from "./modules/basket/basket.component";
+import {OrderComponent} from "./modules/order/order.component";
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
       {path: 'products', component: ProductComponent},
       {path: 'product/:slug', component: ProductDetailsComponent},
       {path: 'category/:slug', component: CategoryComponent},
-      {path: 'basket', component: BasketComponent}
+      {path: 'basket', component: BasketComponent},
+      {path: 'order', component: OrderComponent}
     ]
   },
   {

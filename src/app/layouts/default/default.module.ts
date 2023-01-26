@@ -10,6 +10,7 @@ import {ProductDetailsComponent} from "../../modules/product-details/product-det
 import {CategoryComponent} from "../../modules/category/category.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {BasketComponent} from "../../modules/basket/basket.component";
+import {OrderComponent} from "../../modules/order/order.component";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {BasketComponent} from "../../modules/basket/basket.component";
     ProductComponent,
     ProductDetailsComponent,
     CategoryComponent,
-    BasketComponent
+    BasketComponent,
+    OrderComponent
   ],
   imports: [
     CommonModule,

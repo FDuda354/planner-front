@@ -1,0 +1,120 @@
+<h1>Order</h1>
+<div *ngIf="orderSummary" class="orderSummary">
+  <div>Your Order ID: {{orderSummary.id}}</div>
+  <div>Date: {{orderSummary.placeDate | date: 'HH:mm dd-MM-yyyy'}}</div>
+  <div>Status: {{getStatus(orderSummary.status)}}</div>
+  <div>Total Value: {{orderSummary.grossValue}}</div>
+</div>
+
+<div *ngIf="!orderSummary && basketSummary && basketSummary.items.length <= 0">
+  Your basket is empty!
+</div>
+
+
+<div *ngIf="!orderSummary && basketSummary && basketSummary.items.length > 0">
+  <form [formGroup]="formGroup" (submit)="submitOrder()">
+    <div fxLayout="column" class="orderForm">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="First Name" formControlName="firstName">
+        <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)" >
+          <mat-error *ngIf="firstName?.errors?.['required']">firstName is required</mat-error>
+          <mat-error *ngIf="firstName?.errors?.['minlength']">firstName must be at least 3 characters long</mat-error>
+          <mat-error *ngIf="firstName?.errors?.['maxlength']">firstName must be at most 30 characters long</mat-error>
+        </div>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Last Name" formControlName="lastName">
+        <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" >
+          <mat-error *ngIf="lastName?.errors?.['required']">lastName is required</mat-error>
+          <mat-error *ngIf="lastName?.errors?.['minlength']">lastName must be at least 3 characters long</mat-error>
+          <mat-error *ngIf="lastName?.errors?.['maxlength']">lastName must be at most 30 characters long</mat-error>
+        </div>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Street</mat-label>
+        <input matInput placeholder="Street" formControlName="street">
+        <div *ngIf="street?.invalid && (street?.dirty || street?.touched)" >
+          <mat-error *ngIf="street?.errors?.['required']">lastName is required</mat-error>
+          <mat-error *ngIf="street?.errors?.['minlength']">lastName must be at least 3 characters long</mat-error>
+          <mat-error *ngIf="street?.errors?.['maxlength']">lastName must be at most 60 characters long</mat-error>
+        </div>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>zipCode</mat-label>
+        <input matInput placeholder="ZipCode" formControlName="zipCode">
+        <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)" >
+          <mat-error *ngIf="zipCode?.errors?.['required']">street is required</mat-error>
+          <mat-error *ngIf="zipCode?.errors?.['pattern']">street format is not correct</mat-error>
+        </div>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>City</mat-label>
+        <input matInput placeholder="City" formControlName="city">
+        <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" >
+          <mat-error *ngIf="city?.errors?.['required']">city is required</mat-error>
+          <mat-error *ngIf="city?.errors?.['minlength']">city must be at least 3 characters long</mat-error>
+          <mat-error *ngIf="city?.errors?.['maxlength']">city must be at most 30 characters long</mat-error>
+        </div>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="Email" formControlName="email">
+        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" >
+          <mat-error *ngIf="email?.errors?.['required']">email is required</mat-error>
+          <mat-error *ngIf="email?.errors?.['email']">email format is not correct</mat-error>
+          <mat-error *ngIf="email?.errors?.['maxlength']">email must be at most 60 characters long</mat-error>
+        </div>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput placeholder="Phone" formControlName="phone">
+        <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" >
+          <mat-error *ngIf="phone?.errors?.['required']">phone is required</mat-error>
+          <mat-error *ngIf="phone?.errors?.['pattern']">phone format must by (+48 111 222 333)</mat-error>
+          <mat-error *ngIf="phone?.errors?.['minlength']">phone format must by (+48 111 222 333)</mat-error>
+          <mat-error *ngIf="phone?.errors?.['maxlength']">phone format must by (+48 111 222 333)</mat-error>
+        </div>
+      </mat-form-field>
+    </div>
+    <div>
+      <div fxLayoutGap="25px grid">
+        <div>
+          <h2>Your Products:</h2>
+          <div fxLayout="row" fxLayoutAlign="space-between start" class="card-hrow">
+            <div class="cart-hcol-1">Image</div>
+            <div class="cart-hcol-2">Name</div>
+            <div class="cart-hcol-3">Quantity</div>
+            <div class="cart-hcol-4">Price</div>
+          </div>
+          <div *ngFor="let item of basketSummary.items; let i = index"  class="card-row">
+            <div fxLayout="row" fxLayoutAlign="space-between start">
+              <div class="cart-col-1">
+                <a routerLink="{{'/products/' + item.product?.slug}}">
+                  <img *ngIf="!item.product?.image" src="/assets/image-placeholder.png" width="100">
+                  <img *ngIf="item.product?.image" src="{{'/api/data/productImage/' + item.product?.image}}" width="100">
+                </a>
+              </div>
+              <div class="cart-col-2">{{item.product?.name}}</div>
+              <div class="cart-col-3">{{item.quantity}}</div>
+              <div class="cart-col-4">{{item.linePrice}}</div>
+            </div>
+          </div>
+          <div fxLayoutAlign="end start">
+            <div class="summary"> Total Price: </div>
+            <div class="summary"> <b>{{basketSummary?.summary?.grossValue}}</b></div>
+          </div>
+        </div>
+<!--        TODO: zapisac sobie. moze sie przydac-->
+<!--        <div fxLayoutAlign="end start">-->
+<!--          <button mat-flat-button color="accent" class="orderButton" [disabled]="formGroup.invalid">Order and Pay Now</button>-->
+<!--        </div>-->
+        <div fxLayoutAlign="end start">
+          <button mat-flat-button color="accent" class="orderButton">Order and Pay Now</button>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>

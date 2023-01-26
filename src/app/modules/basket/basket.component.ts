@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {BasketService} from "./basket.service";
-import {BasketSummary} from "./model/basketSummary";
+import {BasketSummary} from "../common/model/basket/basketSummary";
 import {CookieService} from "ngx-cookie-service";
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
-import {BasketSummaryItem} from "./model/basketSummaryItem";
+import {BasketSummaryItem} from "../common/model/basket/basketSummaryItem";
 import {BasketIconService} from "../common/service/basket-icon.service";
 
 
