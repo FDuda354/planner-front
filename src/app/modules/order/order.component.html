@@ -140,10 +140,9 @@
             <span class="orderTotalValue"> {{basketSummary?.summary?.grossValue + shipment?.value.price}}</span>
           </div>
         </div>
-        <!--        TODO: zapisac sobie. moze sie przydac-->
-        <!--        <div fxLayoutAlign="end start">-->
-        <!--          <button mat-flat-button color="accent" class="orderButton" [disabled]="formGroup.invalid">Order and Pay Now</button>-->
-        <!--        </div>-->
+        <div *ngIf="errorMessage" fxLayoutAlign="end start">
+          <mat-error>Something is wrong</mat-error>
+        </div>
         <div fxLayoutAlign="end start">
           <button mat-flat-button color="accent" class="orderButton">Order and Pay Now</button>
         </div>
@@ -152,3 +151,8 @@
 
   </form>
 </div>
+
+<!--        TODO: zapisac sobie. moze sie przydac-->
+<!--        <div fxLayoutAlign="end start">-->
+<!--          <button mat-flat-button color="accent" class="orderButton" [disabled]="formGroup.invalid">Order and Pay Now</button>-->
+<!--        </div>-->
