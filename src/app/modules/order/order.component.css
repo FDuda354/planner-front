@@ -76,3 +76,41 @@
   font-weight: bold;
   font-size: 1.2em;
 }
+.shipmentRadioButton {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+
+}
+.shipmentRadioButton :hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.shipment-1 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-right: 16px;
+}
+.shipment-2 {
+  font-size: 14px;
+  color: #999;
+}
+.orderTotal {
+  padding: 15px;
+  border-bottom: 2px solid #eee;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.orderTotalValue {
+  color: green;
+}
+.paymentNote{
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 20px;
+}

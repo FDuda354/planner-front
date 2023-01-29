@@ -11,6 +11,7 @@ import {CategoryComponent} from "../../modules/category/category.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {BasketComponent} from "../../modules/basket/basket.component";
 import {OrderComponent} from "../../modules/order/order.component";
+import {ReplacePipe} from "../../modules/common/pipe/preplacePipe";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {OrderComponent} from "../../modules/order/order.component";
     ProductDetailsComponent,
     CategoryComponent,
     BasketComponent,
-    OrderComponent
+    OrderComponent,
+    ReplacePipe
   ],
   imports: [
     CommonModule,
