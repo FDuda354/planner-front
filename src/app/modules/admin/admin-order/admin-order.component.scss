@@ -8,6 +8,58 @@ table {
   width: 100%;
 }
 .status-NEW{
-    background-color: rgb(217, 252, 223);
-    padding: 7px;
+  background-color: rgba(33, 150, 83, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  color: #2196f3;
+  font-weight: bold;
+  text-align: center;
+}
+.status-PROCESSING{
+  background-color: rgba(255, 193, 7, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  color: #2196f3;
+  font-weight: bold;
+  text-align: center;
+}
+.status-WAITING_FOR_DELIVERY{
+  background-color: rgba(156, 39, 176, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  color: #2196f3;
+  font-weight: bold;
+  text-align: center;
+}
+.status-COMPLETED{
+  background-color: rgba(3, 169, 244, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  color: #2196f3;
+  font-weight: bold;
+  text-align: center;
+}
+.status-CANCELED{
+  background-color: rgba(255, 82, 82, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  color: #2196f3;
+  font-weight: bold;
+  text-align: center;
+}
+.status-REFUND{
+  background-color: rgba(255, 159, 67, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  color: #2196f3;
+  font-weight: bold;
+  text-align: center;
+}
+.status-PAID{
+  background-color: rgba(76, 175, 80, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  color: #2196f3;
+  font-weight: bold;
+  text-align: center;
 }
