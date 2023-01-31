@@ -34,6 +34,10 @@ import {AdminOrderComponent} from "../../modules/admin/admin-order/admin-order.c
 import {
   AdminOrderUpdateComponent
 } from "../../modules/admin/admin-order/admin-order-update/admin-order-update.component";
+import {
+  AdminOrderExportComponent
+} from "../../modules/admin/admin-order/admin-order-export/admin-order-export.component";
+import {AdminOrderStatsComponent} from "../../modules/admin/admin-order/admin-order-stats/admin-order-stats.component";
 
 
 
@@ -52,7 +56,9 @@ import {
     AdminCategoryUpdateComponent,
     AdminCategoryFormComponent,
     AdminOrderComponent,
-    AdminOrderUpdateComponent
+    AdminOrderUpdateComponent,
+    AdminOrderExportComponent,
+    AdminOrderStatsComponent
   ],
   imports: [
     CommonModule,

@@ -8,9 +8,8 @@ import {FullpageModule} from "./layouts/fullpage/fullpage.module";
 import {FullpageadminModule} from "./layouts/fullpageadmin/fullpageadmin.module";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
-import { BasketComponent } from './modules/basket/basket.component';
 import {CookieService} from "ngx-cookie-service";
-
+import { AdminOrderStatsComponent } from './modules/admin/admin-order/admin-order-stats/admin-order-stats.component';
 
 
 

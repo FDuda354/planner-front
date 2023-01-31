@@ -1,7 +1,20 @@
-.order-hcol-1, .order-hcol-2, .order-hcol-3{
-    font-weight: 600;
+.order-hcol-1, .order-hcol-2, .order-hcol-3 {
+  font-weight: 600;
 }
-.order-col-1, .order-hcol-1{
-    min-width: 450px;
-    padding: 4px 0; 
+
+.order-col-1, .order-hcol-1 {
+  min-width: 450px;
+  padding: 4px 0;
+}
+
+.orderLogo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  background: #eeeeee;
+  padding: 7px;
+  margin-bottom: 15px;
+}
+:host > div{
+  margin-bottom: 7px;
 }

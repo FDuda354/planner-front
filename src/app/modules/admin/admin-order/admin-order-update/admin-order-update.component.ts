@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { AdminOrderService } from '../admin-order.service';
-import { AdminOrder } from '../model/adminOrder';
+import {AdminOrderService} from '../admin-order.service';
+import {AdminOrder} from '../model/adminOrder';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -14,7 +14,7 @@ export class AdminOrderUpdateComponent implements OnInit {
 
   order!: AdminOrder;
   formGroup!: FormGroup;
-  statuses!: Map<string,string>;
+  statuses!: Map<string, string>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -22,12 +22,13 @@ export class AdminOrderUpdateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private router: Router,
-    ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.getInitData();
     this.formGroup = this.formBuilder.group({
-      orderStatus: ['',Validators.required]
+      orderStatus: ['', Validators.required]
     });
     this.getOrder();
   }
@@ -40,7 +41,7 @@ export class AdminOrderUpdateComponent implements OnInit {
         this.formGroup.setValue({
           orderStatus: order.orderStatus
         })
-
+        order.logs.sort((a, b) => new Date(a.created).getTime() - new Date(b.created).getTime())
       });
   }
 
@@ -58,7 +59,7 @@ export class AdminOrderUpdateComponent implements OnInit {
 
   private getInitData() {
     this.adminOrderService.getInitData()
-      .subscribe(data  => {
+      .subscribe(data => {
         this.statuses = data.orderStatuses;
       });
   }

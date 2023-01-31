@@ -47,3 +47,10 @@
     <div>Email: {{order?.email}}</div>
     <div>Phone: {{order?.phone}}</div>
 </div>
+<div>
+  <h2>Logs:</h2>
+  <div *ngFor="let log of order?.logs">
+    <div>{{log?.created | date : 'yyyy-MM-dd HH:mm'}} </div>
+    <div>{{log?.note}}</div>
+  </div>
+</div>
