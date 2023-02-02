@@ -40,7 +40,6 @@ import {
 import {AdminOrderStatsComponent} from "../../modules/admin/admin-order/admin-order-stats/admin-order-stats.component";
 
 
-
 @NgModule({
   declarations: [
     FullpageadminComponent,

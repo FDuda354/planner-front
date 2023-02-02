@@ -10,15 +10,16 @@
     </div>
     <div formGroupName="items">
       <div *ngFor="let item of items; let i = index">
-        <div [formGroupName]="i"  fxLayout="row" fxLayoutAlign="space-between start" class="card-row">
+        <div [formGroupName]="i" fxLayout="row" fxLayoutAlign="space-between start" class="card-row">
           <div class="cart-col-1">
             <a routerLink="{{'/products/' + item.value?.product?.slug}}">
               <img *ngIf="!item.value?.product?.image" src="/assets/image-placeholder.png" width="100">
-              <img *ngIf="item.value?.product?.image" src="{{'/api/data/productImage/' + item.value?.product?.image}}" width="100">
+              <img *ngIf="item.value?.product?.image" src="{{'/api/data/productImage/' + item.value?.product?.image}}"
+                   width="100">
             </a>
           </div>
           <div class="cart-col-2">{{item.value?.product?.name}}</div>
-<!--          TODO: change input to select and add validation-->
+          <!--          TODO: change input to select and add validation-->
           <div class="cart-col-3"><input formControlName="quantity" class="quantityInput"></div>
           <div class="cart-col-4">{{item.value?.linePrice}}</div>
           <div class="cart-col-5">
@@ -30,7 +31,7 @@
       </div>
     </div>
     <div class="card-row" fxLayoutAlign="end start">
-<!--      TODO: after adding validation, add chane to select. remove this-->
+      <!--      TODO: after adding validation, add chane to select. remove this-->
       <button mat-flat-button color="accent" (click)="submit()">Update basket</button>
     </div>
     <div fxLayoutAlign="end start">
@@ -38,8 +39,8 @@
       <div class="summary"><b>{{basketSummary?.summary?.grossValue}}</b></div>
     </div>
     <div fxLayoutAlign="end start">
-<!--      type="button" dodajemy aby nie submitował całego formularza-->
-      <button type="button" class="orderButton" mat-flat-button color="primary"  routerLink="/order">Order Now</button>
+      <!--      type="button" dodajemy aby nie submitował całego formularza-->
+      <button type="button" class="orderButton" mat-flat-button color="primary" routerLink="/order">Order Now</button>
     </div>
   </div>
 </form>

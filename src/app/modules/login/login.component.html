@@ -1,1 +1,42 @@
-<p>login works!</p>
+<div fxLayout="row">
+  <div fxFlex>
+
+    <form [formGroup]="loginForm" fxLayout="column" (submit)="login()" class="loginForm">
+      <div *ngIf="loginError" class="error">Inva</div>
+      <h2>Login</h2>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="username">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password">
+      </mat-form-field>
+      <button mat-flat-button color="primary">Login</button>
+      <div *ngIf="loginError">
+        <mat-error>Invalid login or password</mat-error>
+      </div>
+    </form>
+  </div>
+  <div fxFlex>
+    <form [formGroup]="registerForm" fxLayout="column" (submit)="register()" class="registerForm">
+      <h2>Register</h2>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="username">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Repeat password</mat-label>
+        <input type="password" matInput formControlName="confirmPassword" placeholder="Repeat password">
+      </mat-form-field>
+      <button mat-flat-button color="primary">Register</button>
+      <div *ngIf="registerError">
+        <mat-error>{{registerErrorMsg}}</mat-error>
+      </div>
+    </form>
+  </div>
+</div>

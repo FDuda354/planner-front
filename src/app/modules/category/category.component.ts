@@ -62,13 +62,14 @@ export class CategoryComponent implements OnInit, OnDestroy {
       .subscribe(summary => {
         this.basketIconService.setBasketIconCount(summary.items.length);
         this.cookieService.delete('basketId');
-        this.cookieService.set('basketId', summary.id.toString(),this.expirationDate(3));
+        this.cookieService.set('basketId', summary.id.toString(), this.expirationDate(3));
       });
   }
 
   private expirationDate(days: number) {
     return new Date(Date.now() + days * 24 * 60 * 60 * 1000);
   }
+
 //TODO: }
 }
 

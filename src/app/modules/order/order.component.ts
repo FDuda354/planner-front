@@ -102,14 +102,18 @@ export class OrderComponent implements OnInit {
   private setDefaultShipment() {
     // this.formGroup.patchValue({"shipment": this.initData.shipments.filter(shipment => shipment.defaultShipment)[0]})
     //TODO: to remove
-    this.formGroup.patchValue({"shipment": this.initData.shipments
-        .filter(shipment => shipment.defaultShipment)[0]})
+    this.formGroup.patchValue({
+      "shipment": this.initData.shipments
+        .filter(shipment => shipment.defaultShipment)[0]
+    })
   }
 
   private setDefaultPayment() {
-    this.formGroup.patchValue({"payment": this.initData.payments.
-      filter(payment => payment.defaultPayment)[0]})
+    this.formGroup.patchValue({
+      "payment": this.initData.payments.filter(payment => payment.defaultPayment)[0]
+    })
   }
+
   getStatus(status: string) {
     return this.statuses.get(status);
   }
@@ -141,6 +145,7 @@ export class OrderComponent implements OnInit {
   get phone() {
     return this.formGroup.get('phone');
   }
+
   get shipment() {
     return this.formGroup.get('shipment');
   }

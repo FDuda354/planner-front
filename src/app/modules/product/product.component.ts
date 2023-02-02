@@ -6,7 +6,6 @@ import {PageEvent} from "@angular/material/paginator";
 import {BasketService} from "../basket/basket.service";
 import {CookieService} from "ngx-cookie-service";
 import {BasketIconService} from "../common/service/basket-icon.service";
-import {BasketComponent} from "../basket/basket.component";
 
 @Component({
   selector: 'app-product',
@@ -22,7 +21,7 @@ export class ProductComponent implements OnInit {
     private basketService: BasketService,
     private cookieService: CookieService,
     private basketIconService: BasketIconService
-    ) {
+  ) {
   }
 
   ngOnInit(): void {
@@ -42,6 +41,7 @@ export class ProductComponent implements OnInit {
       this.page = data;
     });
   }
+
 //TODO: usunac jak beda problemy i dodawac przez link {
   addProduct(id: number) {
     let basketId = Number(this.cookieService.get('basketId'));
@@ -49,12 +49,13 @@ export class ProductComponent implements OnInit {
       .subscribe(summary => {
         this.basketIconService.setBasketIconCount(summary.items.length);
         this.cookieService.delete('basketId');
-        this.cookieService.set('basketId', summary.id.toString(),this.expirationDate(3));
+        this.cookieService.set('basketId', summary.id.toString(), this.expirationDate(3));
       });
   }
 
   private expirationDate(days: number) {
     return new Date(Date.now() + days * 24 * 60 * 60 * 1000);
   }
+
 //TODO: }
 }

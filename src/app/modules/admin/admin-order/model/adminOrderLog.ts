@@ -1,6 +1,6 @@
-export interface AdminOrderLog{
-    id: number,
-    created: Date,
-    note: string,
+export interface AdminOrderLog {
+  id: number,
+  created: Date,
+  note: string,
 
 }

@@ -1,3 +1,3 @@
-export interface AdminProductDto{
-    name: string
+export interface AdminProductDto {
+  name: string
 }

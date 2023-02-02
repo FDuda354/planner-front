@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BasketCommonService} from "../common/service/basket-common.service";
 import {Observable} from "rxjs";
@@ -15,10 +15,11 @@ export class OrderService {
   constructor(
     private http: HttpClient,
     private basketCommonService: BasketCommonService
-  ) { }
+  ) {
+  }
 
 
-  getBasket(basketId: number): Observable<BasketSummary>{
+  getBasket(basketId: number): Observable<BasketSummary> {
     return this.basketCommonService.getBasket(basketId);
   }
 

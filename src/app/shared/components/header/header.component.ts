@@ -14,24 +14,25 @@ export class HeaderComponent implements OnInit {
     private cookieService: CookieService,
     private headerService: HeaderService,
     private basketIconService: BasketIconService,
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.getBasketProductsCount();
     this.basketIconService.subject.subscribe(count => {
-      this.basketProductsCount = String(count>0?count:"");
+      this.basketProductsCount = String(count > 0 ? count : "");
     });
   }
+
   title = 'Shop';
   basketProductsCount = "";
 
-  getBasketProductsCount(){
+  getBasketProductsCount() {
     let basketId = Number(this.cookieService.get('basketId'));
     this.headerService.getBasketProductsCount(basketId).subscribe(counter => {
-      this.basketProductsCount = String(counter>0?counter:"");
+      this.basketProductsCount = String(counter > 0 ? counter : "");
     });
   }
-
 
 
 }

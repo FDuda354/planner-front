@@ -5,11 +5,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Review} from "./model/review";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {ProductService} from "../product/product.service";
 import {BasketService} from "../basket/basket.service";
 import {CookieService} from "ngx-cookie-service";
 import {BasketIconService} from "../common/service/basket-icon.service";
-import {BasketComponent} from "../basket/basket.component";
 
 @Component({
   selector: 'app-product-details',
@@ -80,7 +78,7 @@ export class ProductDetailsComponent implements OnInit {
       .subscribe(summary => {
         this.basketIconService.setBasketIconCount(summary.items.length);
         this.cookieService.delete('basketId');
-        this.cookieService.set('basketId', summary.id.toString(),this.expirationDate(3));
+        this.cookieService.set('basketId', summary.id.toString(), this.expirationDate(3));
       });
     this.router.navigate(['/products']);
   }
@@ -88,5 +86,6 @@ export class ProductDetailsComponent implements OnInit {
   private expirationDate(days: number) {
     return new Date(Date.now() + days * 24 * 60 * 60 * 1000);
   }
+
 //TODO: }
 }

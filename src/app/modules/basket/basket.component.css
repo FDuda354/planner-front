@@ -2,49 +2,54 @@
 .cart-hcol-2,
 .cart-hcol-3,
 .cart-hcol-4,
-.cart-hcol-5{
+.cart-hcol-5 {
   padding: 7px;
   font-size: 18px;
   font-weight: 500;
   min-width: 110px;
   text-align: center;
 }
+
 .cart-col-1,
 .cart-col-2,
 .cart-col-3,
 .cart-col-4,
-.cart-col-5{
+.cart-col-5 {
   padding: 7px;
   font-size: 18px;
   width: 100px;
   text-align: center;
 }
 
-.cart-hcol-2, .cart-col-2{
+.cart-hcol-2, .cart-col-2 {
   min-width: 250px;
 }
+
 .summary {
   padding: 7px;
   font-size: 18px;
   width: 100px;
   text-align: center;
 }
-.card-hrow, .card-row{
+
+.card-hrow, .card-row {
   background: white;
   padding: 4px;
   border-bottom: 1px solid #eee;
 }
-.summary{
+
+.summary {
   background: white;
   padding: 11px;
   border-bottom: 1px solid #eee;
 }
-.quantityInput{
+
+.quantityInput {
   width: 25px;
   text-align: center;
 }
 
-.orderButton{
+.orderButton {
   background: #f0c14b;
   border: 1px solid;
   margin-top: 12px;

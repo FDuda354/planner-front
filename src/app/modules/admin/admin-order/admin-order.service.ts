@@ -1,15 +1,16 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Page } from '../../common/model/page';
-import { AdminOrder } from './model/adminOrder';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Page} from '../../common/model/page';
+import {AdminOrder} from './model/adminOrder';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminOrderService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getOrders(pageIndex: number, pageSize: number): Observable<Page<AdminOrder>> {
     return this.http.get<Page<AdminOrder>>(`/api/admin/orders?page=${pageIndex}&size=${pageSize}`);
@@ -23,7 +24,7 @@ export class AdminOrderService {
     return this.http.patch<void>("/api/admin/order/" + id, order);
   }
 
-  getInitData(): Observable<any>{
+  getInitData(): Observable<any> {
     return this.http.get<any>("/api/admin/orders/initData");
   }
 
@@ -32,6 +33,7 @@ export class AdminOrderService {
       {responseType: 'blob', observe: 'response'}
     );
   }
+
   getSalesStats(): Observable<any> {
     return this.http.get(`/api/admin/orders/stats`);
   }

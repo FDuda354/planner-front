@@ -21,9 +21,9 @@
   </div>
   <mat-card-actions align="end" fxLayoutGap="10">
     <button mat-flat-button color="accent" routerLink="{{'/product/'+product.slug}}">Show</button>
-    <button mat-flat-button color="primary" (click)="addProduct(product.id)" >Add to cart</button>
-<!--    TODO: To Remove Later-->
-<!--    <button mat-flat-button color="primary" routerLink="/basket" [queryParams]="{productId: product.id}" >Add to cart</button>-->
+    <button mat-flat-button color="primary" (click)="addProduct(product.id)">Add to cart</button>
+    <!--    TODO: To Remove Later-->
+    <!--    <button mat-flat-button color="primary" routerLink="/basket" [queryParams]="{productId: product.id}" >Add to cart</button>-->
 
   </mat-card-actions>
 </mat-card>

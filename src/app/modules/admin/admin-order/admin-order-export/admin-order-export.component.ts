@@ -7,7 +7,7 @@ import {AdminOrderService} from "../admin-order.service";
   templateUrl: './admin-order-export.component.html',
   styleUrls: ['./admin-order-export.component.css']
 })
-export class AdminOrderExportComponent implements OnInit{
+export class AdminOrderExportComponent implements OnInit {
 
   formGroup!: FormGroup;
   statuses = [];
@@ -33,7 +33,6 @@ export class AdminOrderExportComponent implements OnInit{
         this.formGroup.get('from')?.value.toISOString(),
         this.formGroup.get('to')?.value.toISOString(),
         this.formGroup.get('orderStatus')?.value
-
       ).subscribe(response => {
         let a = document.createElement('a');
         let url = URL.createObjectURL(response.body);
@@ -44,6 +43,7 @@ export class AdminOrderExportComponent implements OnInit{
       });
     }
   }
+
   private getInitData() {
     this.adminOrderService.getInitData()
       .subscribe(data => {

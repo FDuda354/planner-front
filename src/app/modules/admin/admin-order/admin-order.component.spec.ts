@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AdminOrderComponent } from './admin-order.component';
+import {AdminOrderComponent} from './admin-order.component';
 
 describe('AdminOrderComponent', () => {
   let component: AdminOrderComponent;
@@ -8,9 +8,9 @@ describe('AdminOrderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminOrderComponent ]
+      declarations: [AdminOrderComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Subject} from "rxjs";
 
 @Injectable({
@@ -7,7 +7,9 @@ import {Subject} from "rxjs";
 export class BasketIconService {
 
   subject: Subject<Number> = new Subject();
-  constructor() { }
+
+  constructor() {
+  }
 
   setBasketIconCount(count: Number) {
     this.subject.next(count);

@@ -1,3 +1,3 @@
-export interface AdminShipmentDto{
-    name: string
+export interface AdminShipmentDto {
+  name: string
 }

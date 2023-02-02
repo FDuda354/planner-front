@@ -13,10 +13,11 @@ import {BasketIconService} from "../common/service/basket-icon.service";
   templateUrl: './basket.component.html',
   styleUrls: ['./basket.component.css']
 })
-export class BasketComponent implements OnInit{
+export class BasketComponent implements OnInit {
 
   basketSummary!: BasketSummary;
   formGroup!: FormGroup;
+
   constructor(
     private route: ActivatedRoute,
     private basketService: BasketService,
@@ -24,23 +25,24 @@ export class BasketComponent implements OnInit{
     private basketIconService: BasketIconService,
     private router: Router,
     private formBuilder: FormBuilder,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
       items: this.formBuilder.array([])
     });
     let productId = Number(this.route.snapshot.queryParams['productId']);
-    if(productId > 0){
+    if (productId > 0) {
       this.addProductToBasket(productId);
     } else {
       this.getBasket();
     }
   }
 
-  getBasket(){
+  getBasket() {
     let basketId = Number(this.cookieService.get('basketId'));
-    if(basketId > 0) {
+    if (basketId > 0) {
       this.basketService.getBasket(basketId)
         .subscribe(summary => {
           this.basketSummary = summary;
@@ -59,7 +61,7 @@ export class BasketComponent implements OnInit{
         this.patchFormItems();
         this.basketIconService.setBasketIconCount(summary.items.length);
         this.cookieService.delete('basketId');
-        this.cookieService.set('basketId', summary.id.toString(),this.expirationDate(3));
+        this.cookieService.set('basketId', summary.id.toString(), this.expirationDate(3));
         this.router.navigate(['/basket']);
       });
   }
@@ -72,9 +74,10 @@ export class BasketComponent implements OnInit{
         quantity: [item.quantity],
         product: [item.product],
         linePrice: [item.linePrice]
-    }));
-  });
+      }));
+    });
   }
+
   private expirationDate(days: number) {
     return new Date(Date.now() + days * 24 * 60 * 60 * 1000);
   }
@@ -91,8 +94,8 @@ export class BasketComponent implements OnInit{
   private maptoRequestListDto(): any[] {
     let items: Array<BasketSummaryItem> = this.formGroup.get('items')?.value;
     return items.map(item => ({
-        productId: item.product.id,
-        quantity: item.quantity
+      productId: item.product.id,
+      quantity: item.quantity
     }));
 
   }
