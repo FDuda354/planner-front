@@ -18,71 +18,74 @@
 
 <div *ngIf="!orderSummary && basketSummary && basketSummary.items.length > 0">
   <form [formGroup]="formGroup" (submit)="submitOrder()">
-    <div fxLayout="column" class="orderForm">
-      <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
-        <input matInput placeholder="First Name" formControlName="firstName">
-        <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)">
-          <mat-error *ngIf="firstName?.errors?.['required']">firstName is required</mat-error>
-          <mat-error *ngIf="firstName?.errors?.['minlength']">firstName must be at least 3 characters long</mat-error>
-          <mat-error *ngIf="firstName?.errors?.['maxlength']">firstName must be at most 30 characters long</mat-error>
-        </div>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Last Name" formControlName="lastName">
-        <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)">
-          <mat-error *ngIf="lastName?.errors?.['required']">lastName is required</mat-error>
-          <mat-error *ngIf="lastName?.errors?.['minlength']">lastName must be at least 3 characters long</mat-error>
-          <mat-error *ngIf="lastName?.errors?.['maxlength']">lastName must be at most 30 characters long</mat-error>
-        </div>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Street</mat-label>
-        <input matInput placeholder="Street" formControlName="street">
-        <div *ngIf="street?.invalid && (street?.dirty || street?.touched)">
-          <mat-error *ngIf="street?.errors?.['required']">lastName is required</mat-error>
-          <mat-error *ngIf="street?.errors?.['minlength']">lastName must be at least 3 characters long</mat-error>
-          <mat-error *ngIf="street?.errors?.['maxlength']">lastName must be at most 60 characters long</mat-error>
-        </div>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>zipCode</mat-label>
-        <input matInput placeholder="ZipCode" formControlName="zipCode">
-        <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)">
-          <mat-error *ngIf="zipCode?.errors?.['required']">street is required</mat-error>
-          <mat-error *ngIf="zipCode?.errors?.['pattern']">street format is not correct</mat-error>
-        </div>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>City</mat-label>
-        <input matInput placeholder="City" formControlName="city">
-        <div *ngIf="city?.invalid && (city?.dirty || city?.touched)">
-          <mat-error *ngIf="city?.errors?.['required']">city is required</mat-error>
-          <mat-error *ngIf="city?.errors?.['minlength']">city must be at least 3 characters long</mat-error>
-          <mat-error *ngIf="city?.errors?.['maxlength']">city must be at most 30 characters long</mat-error>
-        </div>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input type="email" matInput placeholder="Email" formControlName="email">
-        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
-          <mat-error *ngIf="email?.errors?.['required']">email is required</mat-error>
-          <mat-error *ngIf="email?.errors?.['email']">email format is not correct</mat-error>
-          <mat-error *ngIf="email?.errors?.['maxlength']">email must be at most 60 characters long</mat-error>
-        </div>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Phone</mat-label>
-        <input matInput placeholder="Phone" formControlName="phone">
-        <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
-          <mat-error *ngIf="phone?.errors?.['required']">phone is required</mat-error>
-          <mat-error *ngIf="phone?.errors?.['pattern']">phone format must by (+48 111 222 333)</mat-error>
-          <mat-error *ngIf="phone?.errors?.['minlength']">phone format must by (+48 111 222 333)</mat-error>
-          <mat-error *ngIf="phone?.errors?.['maxlength']">phone format must by (+48 111 222 333)</mat-error>
-        </div>
-      </mat-form-field>
-
+    <div fxLayout="row" fxLayoutGap="15px">
+      <div fxLayout="column" class="orderForm">
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="First Name" formControlName="firstName">
+          <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)">
+            <mat-error *ngIf="firstName?.errors?.['required']">firstName is required</mat-error>
+            <mat-error *ngIf="firstName?.errors?.['minlength']">firstName must be at least 3 characters long</mat-error>
+            <mat-error *ngIf="firstName?.errors?.['maxlength']">firstName must be at most 30 characters long</mat-error>
+          </div>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last Name" formControlName="lastName">
+          <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)">
+            <mat-error *ngIf="lastName?.errors?.['required']">lastName is required</mat-error>
+            <mat-error *ngIf="lastName?.errors?.['minlength']">lastName must be at least 3 characters long</mat-error>
+            <mat-error *ngIf="lastName?.errors?.['maxlength']">lastName must be at most 30 characters long</mat-error>
+          </div>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Street</mat-label>
+          <input matInput placeholder="Street" formControlName="street">
+          <div *ngIf="street?.invalid && (street?.dirty || street?.touched)">
+            <mat-error *ngIf="street?.errors?.['required']">lastName is required</mat-error>
+            <mat-error *ngIf="street?.errors?.['minlength']">lastName must be at least 3 characters long</mat-error>
+            <mat-error *ngIf="street?.errors?.['maxlength']">lastName must be at most 60 characters long</mat-error>
+          </div>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>zipCode</mat-label>
+          <input matInput placeholder="ZipCode" formControlName="zipCode">
+          <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)">
+            <mat-error *ngIf="zipCode?.errors?.['required']">street is required</mat-error>
+            <mat-error *ngIf="zipCode?.errors?.['pattern']">street format is not correct</mat-error>
+          </div>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="City" formControlName="city">
+          <div *ngIf="city?.invalid && (city?.dirty || city?.touched)">
+            <mat-error *ngIf="city?.errors?.['required']">city is required</mat-error>
+            <mat-error *ngIf="city?.errors?.['minlength']">city must be at least 3 characters long</mat-error>
+            <mat-error *ngIf="city?.errors?.['maxlength']">city must be at most 30 characters long</mat-error>
+          </div>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput placeholder="Email" formControlName="email">
+          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+            <mat-error *ngIf="email?.errors?.['required']">email is required</mat-error>
+            <mat-error *ngIf="email?.errors?.['email']">email format is not correct</mat-error>
+            <mat-error *ngIf="email?.errors?.['maxlength']">email must be at most 60 characters long</mat-error>
+          </div>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Phone</mat-label>
+          <input matInput placeholder="Phone" formControlName="phone">
+          <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+            <mat-error *ngIf="phone?.errors?.['required']">phone is required</mat-error>
+            <mat-error *ngIf="phone?.errors?.['pattern']">phone format must by (+48 111 222 333)</mat-error>
+            <mat-error *ngIf="phone?.errors?.['minlength']">phone format must by (+48 111 222 333)</mat-error>
+            <mat-error *ngIf="phone?.errors?.['maxlength']">phone format must by (+48 111 222 333)</mat-error>
+          </div>
+        </mat-form-field>
+      </div>
+      <div class="loginInfo" *ngIf="!isLogged"><a routerLink="/login">Login</a> to track your orders
+      </div>
     </div>
     <div>
       <div fxLayoutGap="25px grid">

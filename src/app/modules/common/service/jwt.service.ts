@@ -15,6 +15,7 @@ export class JwtService {
   }
 
   getToken(): string | null {
+    console.log(localStorage.getItem('token'));
     return localStorage.getItem('token');
   }
 

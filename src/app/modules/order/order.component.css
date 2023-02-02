@@ -135,3 +135,16 @@
 .mat-mdc-form-field {
   margin-top: 16px;
 }
+.loginInfo {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+
+  border-radius: 10px;
+}
+
+.loginInfo a {
+  color: cornflowerblue;
+  text-decoration: none;
+}

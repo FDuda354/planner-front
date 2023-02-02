@@ -7,6 +7,7 @@ import {OrderDto} from "./model/orderDto";
 import {OrderSummary} from "./model/orderSummary";
 import {BasketIconService} from "../common/service/basket-icon.service";
 import {InitData} from "./model/initData";
+import {JwtService} from "../common/service/jwt.service";
 
 @Component({
   selector: 'app-order',
@@ -20,6 +21,7 @@ export class OrderComponent implements OnInit {
   orderSummary!: OrderSummary;
   initData!: InitData;
   errorMessage = false;
+  isLogged = false;
 
   private statuses = new Map<string, string>([
 
@@ -34,7 +36,8 @@ export class OrderComponent implements OnInit {
     private cookieService: CookieService,
     private orderService: OrderService,
     private formBuilder: FormBuilder,
-    private basketIconService: BasketIconService
+    private basketIconService: BasketIconService,
+    private jwtService: JwtService
   ) {
   }
 
@@ -52,6 +55,7 @@ export class OrderComponent implements OnInit {
     });
     this.getInitData();
     this.checkBasketEmpty();
+    this.isLogged = this.jwtService.isLoggedIn();
   }
 
   checkBasketEmpty() {
