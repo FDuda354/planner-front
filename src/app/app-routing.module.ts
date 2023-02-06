@@ -31,6 +31,7 @@ import {AdminLoginComponent} from "./modules/admin/admin-login/admin-login.compo
 import {FullpageadminemptyComponent} from "./layouts/fullpageadminempty/fullpageadminempty.component";
 import {AdminAuthGuard} from "./modules/admin/common/guard/adminAuthGuard";
 import {ProfileComponent} from "./modules/profile/profile.component";
+import {ProfileAuthGuard} from "./modules/common/guard/profileAuthGuard";
 
 const routes: Routes = [
   {
@@ -41,7 +42,7 @@ const routes: Routes = [
       {path: 'category/:slug', component: CategoryComponent},
       {path: 'basket', component: BasketComponent},
       {path: 'order', component: OrderComponent},
-      {path: 'profile', component: ProfileComponent},
+      {path: 'profile', component: ProfileComponent, canActivate: [ProfileAuthGuard]},
     ]
   },
   {

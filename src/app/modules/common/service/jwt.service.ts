@@ -15,13 +15,12 @@ export class JwtService {
   }
 
   getToken(): string | null {
-    console.log(localStorage.getItem('token'));
     return localStorage.getItem('token');
   }
 
   isLoggedIn(): boolean {
     let token = this.getToken();
-    return !!(token && this.notExpired(token));
+    return token != null && this.notExpired(token);
 
   }
 

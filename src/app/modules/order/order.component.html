@@ -9,6 +9,7 @@
     <span class="paymentNote" [innerHTML]="orderSummary.payment.note | replace: '\n': '<br>'">
     </span>
   </div>
+  <div *ngIf="isLogged">you can see your order status on your <a routerLink="/profile">PROFILE</a></div>
 </div>
 
 <div *ngIf="!orderSummary && basketSummary && basketSummary.items.length <= 0">

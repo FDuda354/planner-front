@@ -12,10 +12,10 @@ export class JwtInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let token = this.jwtService.getToken();
-    // console.log("token beforebeforebefore true: " + token);
-    // console.log("req.url: " + req.url);
-    // console.log("A token to: " + token);
-    if (token && (req.url.startsWith("/api/admin") || req.url.startsWith("api/order") || req.url.startsWith("/api/profile"))) {
+    console.log(req.url);
+    console.log("token before: " + token);
+    if (token && (req.url.startsWith("/api/admin") || req.url.startsWith("api/order") || req.url.startsWith("/api/login"))) {
+      console.log(req.url);
       console.log("token AAAAAAAAA: " + token);
       req = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + token)
@@ -23,6 +23,5 @@ export class JwtInterceptor implements HttpInterceptor {
     }
     return next.handle(req);
   }
-
 
 }
