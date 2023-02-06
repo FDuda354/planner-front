@@ -45,7 +45,8 @@
 }
 
 .quantityInput {
-  width: 25px;
+  width: 50px;
+  height: 25px;
   text-align: center;
 }
 

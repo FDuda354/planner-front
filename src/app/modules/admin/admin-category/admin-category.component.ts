@@ -32,7 +32,7 @@ export class AdminCategoryComponent implements OnInit {
 
   getCategories() {
     this.adminCategoryService.getCategories().subscribe(
-      categories => this.categories = categories
+      categories => this.categories = categories.sort((a, b) => a.id - b.id)
     );
   }
 

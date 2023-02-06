@@ -32,6 +32,7 @@ import {FullpageadminemptyComponent} from "./layouts/fullpageadminempty/fullpage
 import {AdminAuthGuard} from "./modules/admin/common/guard/adminAuthGuard";
 import {ProfileComponent} from "./modules/profile/profile.component";
 import {ProfileAuthGuard} from "./modules/common/guard/profileAuthGuard";
+import {LostPasswordComponent} from "./modules/login/lost-password/lost-password.component";
 
 const routes: Routes = [
   {
@@ -48,7 +49,9 @@ const routes: Routes = [
   {
     path: '', component: FullpageComponent, children: [
       {path: '', component: HomeComponent},
-      {path: 'login', component: LoginComponent}
+      {path: 'login', component: LoginComponent},
+      {path: 'lostPassword/:hash', component: LostPasswordComponent},
+      {path: 'lostPassword', component: LostPasswordComponent},
     ]
   },
   {

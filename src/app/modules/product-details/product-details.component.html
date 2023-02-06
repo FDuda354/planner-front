@@ -2,7 +2,7 @@
   <div fxLayout="column">
     <div fxLayout="row" fxFlex fxLayoutGap="20">
       <div>
-        <img *ngIf="!productDetails.image" src="/assets/image-placeholder.png" width="350">
+        <img *ngIf="!productDetails.image" src="/assets/loader.gif" width="350">
         <img *ngIf="productDetails.image" src="{{'/api/data/productImage/'+ productDetails.image}}" width="350">
       </div>
       <div fxLayout="column" fxFlex>
@@ -12,7 +12,7 @@
           {{productDetails.fullDescription}}
         </div>
         <div fxLayout="row" fxFlexAlign="end">
-          <span class="price">{{productDetails.price}} {{productDetails.currency}}</span>
+          <span class="price">{{productDetails.price.toFixed(2)}} {{productDetails.currency}}</span>
         </div>
         <button mat-flat-button color="primary" (click)="addProduct(productDetails.id)">Add to cart</button>
         <!--          TODO: To Remove Later-->

@@ -8,6 +8,7 @@ export class AdminAuthGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+
     if (!this.jwtService.isLoggedIn() || !this.jwtService.getIsAdmin()) {
       this.router.navigate(['/admin/login']);
     }

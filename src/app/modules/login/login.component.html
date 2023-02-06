@@ -2,7 +2,7 @@
   <div fxFlex>
 
     <form [formGroup]="loginForm" fxLayout="column" (submit)="login()" class="loginForm">
-      <div *ngIf="loginError" class="error">Inva</div>
+      <div *ngIf="loginError" class="error">Something is wrong</div>
       <h2>Login</h2>
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
@@ -16,7 +16,11 @@
       <div *ngIf="loginError">
         <mat-error>Invalid login or password</mat-error>
       </div>
+      <div class="lostPassword">
+        <a routerLink="/lostPassword">Forgot password?</a>
+      </div>
     </form>
+
   </div>
   <div fxFlex>
     <form [formGroup]="registerForm" fxLayout="column" (submit)="register()" class="registerForm">

@@ -8,7 +8,10 @@
     <button mat-raised-button color="primary" routerLink="/products">Products</button>
     <span></span>
   <div *ngIf="isLogged" fxLayoutGap="10">
-    <button mat-raised-button color="primary" routerLink="/login">Profile</button>
+    <button mat-raised-button color="primary" routerLink="/login">
+
+      <img src="/assets/avatar.gif" width="35px" alt="user photo" class="userPhoto">
+      Profile</button>
     <button mat-flat-button color="warn" class="orderButton" (click)="logout()">Logout</button>
   </div>
    <div *ngIf="!isLogged">

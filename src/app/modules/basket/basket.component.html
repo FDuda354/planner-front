@@ -19,8 +19,7 @@
             </a>
           </div>
           <div class="cart-col-2">{{item.value?.product?.name}}</div>
-          <!--          TODO: change input to select and add validation-->
-          <div class="cart-col-3"><input formControlName="quantity" class="quantityInput"></div>
+          <div class="cart-col-3"><input formControlName="quantity" type="number" class="quantityInput" (change)="updateBasket()"></div>
           <div class="cart-col-4">{{item.value?.linePrice}}</div>
           <div class="cart-col-5">
             <button mat-icon-button color="warn" (click)="removeItem(item.value?.id)">
@@ -29,10 +28,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="card-row" fxLayoutAlign="end start">
-      <!--      TODO: after adding validation, add chane to select. remove this-->
-      <button mat-flat-button color="accent" (click)="submit()">Update basket</button>
     </div>
     <div fxLayoutAlign="end start">
       <div class="summary"> Total Price:</div>

@@ -82,7 +82,7 @@ export class BasketComponent implements OnInit {
     return new Date(Date.now() + days * 24 * 60 * 60 * 1000);
   }
 
-  submit() {
+  updateBasket() {
     let basketId = Number(this.cookieService.get('basketId'));
     this.basketService.updateBasket(basketId, this.maptoRequestListDto())
       .subscribe(summary => {

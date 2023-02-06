@@ -17,7 +17,10 @@ import {JwtService} from "../common/service/jwt.service";
 export class OrderComponent implements OnInit {
 
   basketSummary!: BasketSummary;
-  formGroup!: FormGroup;
+  firstFormGroup!: FormGroup;
+  secondFormGroup!: FormGroup;
+  deliveryFormGroup!: FormGroup;
+  paymentFormGroup!: FormGroup;
   orderSummary!: OrderSummary;
   initData!: InitData;
   errorMessage = false;
@@ -42,20 +45,32 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formGroup = this.formBuilder.group({
+
+    this.firstFormGroup = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(60)]],
+      phone: ['+48 ', [Validators.required, Validators.pattern('[- +()0-9]+'), Validators.maxLength(15), Validators.minLength(15)]]
+    });
+
+    this.secondFormGroup = this.formBuilder.group({
       street: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
       zipCode: ['', [Validators.required, Validators.pattern("^[0-9]{2}-[0-9]{3}$")]],
       city: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-      email: ['', [Validators.required, Validators.email, Validators.maxLength(60)]],
-      phone: ['+48 ', [Validators.required, Validators.pattern('[- +()0-9]+'), Validators.maxLength(15), Validators.minLength(15)]],
-      shipment: ['', [Validators.required]],
-      payment: ['', [Validators.required]]
+    });
+
+    this.deliveryFormGroup = this.formBuilder.group({
+      shipment: ['', Validators.required]
+    });
+
+    this.paymentFormGroup = this.formBuilder.group({
+      payment: ['', Validators.required]
     });
     this.getInitData();
     this.checkBasketEmpty();
     this.isLogged = this.jwtService.isLoggedIn();
+
+
   }
 
   checkBasketEmpty() {
@@ -67,7 +82,12 @@ export class OrderComponent implements OnInit {
   }
 
   submitOrder() {
-    if (this.formGroup.valid) {
+    if (this.firstFormGroup.valid && this.secondFormGroup.valid && this.deliveryFormGroup.valid //&& this.paymentFormGroup.valid
+    ) {
+      console.log("p.get('shipment')?.value===" +this.deliveryFormGroup.get('shipment')?.value);
+      console.log("up.get('shipment')?.value.id===" +this.deliveryFormGroup.get('shipment')?.value.id);
+      console.log("up.get('shipment')===" +this.deliveryFormGroup.get('shipment'));
+
       this.orderService.makeOrder({
 
         firstName: this.firstName?.value,
@@ -78,8 +98,8 @@ export class OrderComponent implements OnInit {
         email: this.email?.value,
         phone: this.phone?.value,
         basketId: Number(this.cookieService.get("basketId")),
-        shipmentId: Number(this.formGroup.get('shipment')?.value.id),
-        paymentId: Number(this.formGroup.get('payment')?.value.id)
+        shipmentId: Number(this.deliveryFormGroup.get('shipment')?.value.id),
+        paymentId: Number(this.paymentFormGroup.get('payment')?.value.id)
 
       } as OrderDto).subscribe({
         next: orderSummary => {
@@ -106,14 +126,14 @@ export class OrderComponent implements OnInit {
   private setDefaultShipment() {
     // this.formGroup.patchValue({"shipment": this.initData.shipments.filter(shipment => shipment.defaultShipment)[0]})
     //TODO: to remove
-    this.formGroup.patchValue({
+    this.secondFormGroup.patchValue({
       "shipment": this.initData.shipments
         .filter(shipment => shipment.defaultShipment)[0]
     })
   }
 
   private setDefaultPayment() {
-    this.formGroup.patchValue({
+    this.secondFormGroup.patchValue({
       "payment": this.initData.payments.filter(payment => payment.defaultPayment)[0]
     })
   }
@@ -123,35 +143,39 @@ export class OrderComponent implements OnInit {
   }
 
   get firstName() {
-    return this.formGroup.get('firstName');
+    return this.firstFormGroup.get('firstName');
   }
 
   get lastName() {
-    return this.formGroup.get('lastName');
+    return this.firstFormGroup.get('lastName');
   }
 
   get street() {
-    return this.formGroup.get('street');
+    return this.secondFormGroup.get('street');
   }
 
   get zipCode() {
-    return this.formGroup.get('zipCode');
+    return this.secondFormGroup.get('zipCode');
   }
 
   get city() {
-    return this.formGroup.get('city');
+    return this.secondFormGroup.get('city');
   }
 
   get email() {
-    return this.formGroup.get('email');
+    return this.firstFormGroup.get('email');
   }
 
   get phone() {
-    return this.formGroup.get('phone');
+    return this.firstFormGroup.get('phone');
   }
 
   get shipment() {
-    return this.formGroup.get('shipment');
+    return this.deliveryFormGroup.get('shipment');
+  }
+
+  get payment() {
+    return this.paymentFormGroup.get('payment');
   }
 
 }

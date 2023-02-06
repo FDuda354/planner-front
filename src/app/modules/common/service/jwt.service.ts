@@ -31,12 +31,17 @@ export class JwtService {
 
   removeToken() {
     localStorage.removeItem('token');
+    localStorage.removeItem('isAdmin');
   }
 
   public getIsAdmin(): boolean {
+   this.isAdmin = localStorage.getItem('isAdmin') == true.toString();
     return this.isAdmin;
   }
   public setIsAdmin(isAdmin: boolean): void {
+    console.log("setIsAdmin: "+isAdmin);
     this.isAdmin = isAdmin;
+    if(isAdmin)
+    localStorage.setItem('isAdmin', this.isAdmin.toString());
   }
 }

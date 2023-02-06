@@ -19,5 +19,10 @@ export class LoginService {
   login(loginForm: any): Observable<any> {
     return this.http.post('/api/login', loginForm);
   }
-
+  resetPassword(emailObject: any): Observable<any>  {
+    return this.http.post("/api/lostPassword", emailObject);
+  }
+  changePassword(passwordObject: any): Observable<any> {
+    return this.http.post("/api/changePassword", passwordObject);
+  }
 }
