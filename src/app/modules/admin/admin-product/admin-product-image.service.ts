@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {UploadResponse} from "./model/uploadResponse";
+import {UploadResponse} from "../../common/model/uploadResponse";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({

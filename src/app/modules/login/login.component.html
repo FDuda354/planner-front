@@ -2,7 +2,6 @@
   <div fxFlex>
 
     <form [formGroup]="loginForm" fxLayout="column" (submit)="login()" class="loginForm">
-      <div *ngIf="loginError" class="error">Something is wrong</div>
       <h2>Login</h2>
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>

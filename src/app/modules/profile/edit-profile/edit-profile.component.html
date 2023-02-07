@@ -1,0 +1,32 @@
+<div flexLayout="row" fxFlex fxLayoutGap="15px">
+  <div>
+    <form [formGroup]="formGroupChangePassword"
+          fxLayout="column" (submit)="sendChangePassword()"
+          class="lostPasswordForm">
+      <div *ngIf="formChangePasswordError"
+           class="error">{{formChangePasswordError}}</div>
+      <mat-form-field appearance="fill">
+        <mat-label>Hasło</mat-label>
+        <input type="password" matInput formControlName="password"
+               placeholder="Podaj hasło">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Repeat Password</mat-label>
+        <input type="password" matInput
+               formControlName="repeatPassword" placeholder="repeat Password">
+      </mat-form-field>
+      <button mat-flat-button color="primary">Change passwprd</button>
+    </form>
+  </div>
+  <div>
+    <img *ngIf="image" src="{{'/api/data/productImage/'+image}}" width="200"/>
+    <form [formGroup]="imageForm" (submit)="uploadFile()">
+      <input type="file" [accept]="requiredFileTypes" (change)="onFileChange($event)">
+      <button mat-flat-button color="primary">Upload Profile image</button>
+    </form>
+    <button type="button" mat-flat-button color="primary" (click)="submit()">Update Profile</button>
+  </div>
+
+
+</div>
+

@@ -43,7 +43,6 @@ export class AdminProductUpdateComponent implements OnInit {
       slug: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]]
     });
     this.getProduct();
-    //TODO: why is this here?
     this.imageForm = this.formBuilder.group({
       file: ['']
     });

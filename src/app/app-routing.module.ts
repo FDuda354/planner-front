@@ -33,6 +33,11 @@ import {AdminAuthGuard} from "./modules/admin/common/guard/adminAuthGuard";
 import {ProfileComponent} from "./modules/profile/profile.component";
 import {ProfileAuthGuard} from "./modules/common/guard/profileAuthGuard";
 import {LostPasswordComponent} from "./modules/login/lost-password/lost-password.component";
+import {FullpageuserComponent} from "./layouts/fullpageuser/fullpageuser.component";
+import {EditProfileComponent} from "./modules/profile/edit-profile/edit-profile.component";
+import {UserReviewsComponent} from "./modules/profile/user-reviews/user-reviews.component";
+
+
 
 const routes: Routes = [
   {
@@ -43,7 +48,7 @@ const routes: Routes = [
       {path: 'category/:slug', component: CategoryComponent},
       {path: 'basket', component: BasketComponent},
       {path: 'order', component: OrderComponent},
-      {path: 'profile', component: ProfileComponent, canActivate: [ProfileAuthGuard]},
+      //{path: 'profile', component: ProfileComponent, canActivate: [ProfileAuthGuard]},
     ]
   },
   {
@@ -74,6 +79,14 @@ const routes: Routes = [
   {
     path: '', component: FullpageadminemptyComponent, children: [
       {path: 'admin/login', component: AdminLoginComponent}
+    ]
+  },
+  {
+    path: '', component: FullpageuserComponent, children: [
+      {path: '', component: HomeComponent},
+      {path: 'profile', component: ProfileComponent, canActivate: [ProfileAuthGuard]},
+      {path: 'edit/profile', component: EditProfileComponent, canActivate: [ProfileAuthGuard]},
+      {path: 'profile/reviews', component: UserReviewsComponent, canActivate: [ProfileAuthGuard]}
     ]
   }
 ];

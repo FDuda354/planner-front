@@ -8,6 +8,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {BasketService} from "../basket/basket.service";
 import {CookieService} from "ngx-cookie-service";
 import {BasketIconService} from "../common/service/basket-icon.service";
+import {ProfileService} from "../profile/profile.service";
+import {UserProfileUpdate} from "../profile/edit-profile/model/userProfileUpdate";
 
 @Component({
   selector: 'app-product-details',
@@ -27,6 +29,7 @@ export class ProductDetailsComponent implements OnInit {
     private basketService: BasketService,
     private cookieService: CookieService,
     private basketIconService: BasketIconService,
+    private profileService: ProfileService,
     private router: Router
   ) {
   }
@@ -37,7 +40,6 @@ export class ProductDetailsComponent implements OnInit {
       authorName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]],
       content: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(600)]]
     });
-    console.log(this.productDetails.reviews)
   }
 
   getProductDetails() {
@@ -71,7 +73,6 @@ export class ProductDetailsComponent implements OnInit {
     return this.reviewForm.get('content');
   }
 
-//TODO: usunac jak beda problemy i dodawac przez link {
   addProduct(id: number) {
     let basketId = Number(this.cookieService.get('basketId'));
     this.basketService.addProductToBasket(basketId, {productId: id, quantity: 1})
@@ -86,6 +87,21 @@ export class ProductDetailsComponent implements OnInit {
   private expirationDate(days: number) {
     return new Date(Date.now() + days * 24 * 60 * 60 * 1000);
   }
+  private cache = new Map<number, string>();
+  getUserImage(userId: number): string {
+    if (this.cache.has(userId)) {
+      return this.cache.get(userId)!;
+    }
 
-//TODO: }
+    let profileImage: string = '';
+    this.profileService.getUserImage(userId)
+      .subscribe(userProfileUpdate => {
+        if(userProfileUpdate == null || userProfileUpdate.image == null || userProfileUpdate.image == ''){
+          profileImage = 'avatar.gif';} else {
+        profileImage = userProfileUpdate.image;}
+        this.cache.set(userId, profileImage);
+      });
+
+    return profileImage;
+  }
 }

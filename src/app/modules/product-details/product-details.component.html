@@ -30,8 +30,9 @@
           <mat-card-title>{{review.authorName}}</mat-card-title>
           <!--        TODO: add user rating-->
           <mat-card-subtitle>Rating</mat-card-subtitle>
-          <!--        TODO: add user photo-->
-          <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+          <img *ngIf="!review.userId" mat-card-sm-image src="/assets/avatar.gif">
+          <img *ngIf="review.userId" mat-card-sm-image src="{{'/api/data/productImage/'+ getUserImage(review.userId)}}">
+
         </mat-card-title-group>
         <mat-card-content>
           {{review.content}}

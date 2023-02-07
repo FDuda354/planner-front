@@ -19,7 +19,7 @@
             </a>
           </div>
           <div class="cart-col-2">{{item.value?.product?.name}}</div>
-          <div class="cart-col-3"><input formControlName="quantity" type="number" class="quantityInput" (change)="updateBasket()"></div>
+          <div class="cart-col-3"><input formControlName="quantity" type="number" class="quantityInput" (change)="updateBasket()" min="1"></div>
           <div class="cart-col-4">{{item.value?.linePrice}}</div>
           <div class="cart-col-5">
             <button mat-icon-button color="warn" (click)="removeItem(item.value?.id)">
