@@ -35,9 +35,9 @@ export class AdminLoginComponent implements OnInit {
         .subscribe({
             next: (response) => {
               this.loginError = false;
-              if(response.isAdmin)
-              this.jwtService.setToken(response.token);
-              console.log("ADMIIIIIINNNN: "+response.isAdmin);
+              if (response.isAdmin)
+                this.jwtService.setToken(response.token);
+              console.log("ADMIIIIIINNNN: " + response.isAdmin);
               this.jwtService.setIsAdmin(response.isAdmin);
               this.router.navigate(['/admin']);
             },

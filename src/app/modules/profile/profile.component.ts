@@ -9,22 +9,25 @@ import {Router} from "@angular/router";
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit {
 
   orders!: Array<OrderDtoForUser>;
   displayedColumns = ['id', 'placeDate', 'status', 'grossValue', 'paymentName'];
+
   constructor(
     private profileService: ProfileService,
     private jwtService: JwtService,
     private router: Router
   ) {
   }
+
   ngOnInit(): void {
     if (!this.jwtService.isLoggedIn()) {
       this.router.navigate(['/login']);
     }
     this.getOrders();
   }
+
   getOrders() {
     this.profileService.getOrders().subscribe(
       orders => {

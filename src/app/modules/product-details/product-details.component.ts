@@ -9,7 +9,6 @@ import {BasketService} from "../basket/basket.service";
 import {CookieService} from "ngx-cookie-service";
 import {BasketIconService} from "../common/service/basket-icon.service";
 import {ProfileService} from "../profile/profile.service";
-import {UserProfileUpdate} from "../profile/edit-profile/model/userProfileUpdate";
 
 @Component({
   selector: 'app-product-details',
@@ -87,7 +86,9 @@ export class ProductDetailsComponent implements OnInit {
   private expirationDate(days: number) {
     return new Date(Date.now() + days * 24 * 60 * 60 * 1000);
   }
+
   private cache = new Map<number, string>();
+
   getUserImage(userId: number): string {
     if (this.cache.has(userId)) {
       return this.cache.get(userId)!;
@@ -96,9 +97,11 @@ export class ProductDetailsComponent implements OnInit {
     let profileImage: string = '';
     this.profileService.getUserImage(userId)
       .subscribe(userProfileUpdate => {
-        if(userProfileUpdate == null || userProfileUpdate.image == null || userProfileUpdate.image == ''){
-          profileImage = 'avatar.gif';} else {
-        profileImage = userProfileUpdate.image;}
+        if (userProfileUpdate == null || userProfileUpdate.image == null || userProfileUpdate.image == '') {
+          profileImage = 'avatar.gif';
+        } else {
+          profileImage = userProfileUpdate.image;
+        }
         this.cache.set(userId, profileImage);
       });
 

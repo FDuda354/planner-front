@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {EditProfileService} from "./edit-profile.service";
-import {AdminProductUpdate} from "../../admin/admin-product/model/adminProductUpdate";
 import {UserProfileUpdate} from "./model/userProfileUpdate";
 
 @Component({
@@ -10,7 +9,7 @@ import {UserProfileUpdate} from "./model/userProfileUpdate";
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.css']
 })
-export class EditProfileComponent implements OnInit{
+export class EditProfileComponent implements OnInit {
 
   imageForm!: FormGroup;
 
@@ -23,7 +22,8 @@ export class EditProfileComponent implements OnInit{
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private editProfileService: EditProfileService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.formGroupChangePassword = this.formBuilder.group({
@@ -55,13 +55,13 @@ export class EditProfileComponent implements OnInit{
   }
 
   submit() {
-    this.editProfileService.updateProfileImage( {
+    this.editProfileService.updateProfileImage({
       image: this.image
     } as UserProfileUpdate).subscribe();
     this.snackBar.open("Profile uploaded", "OK", {duration: 3000});
   }
 
-  sendChangePassword(){
+  sendChangePassword() {
     if (this.formGroupChangePassword.valid && this.passwordIdentical(this.formGroupChangePassword.value)) {
       this.editProfileService.changePassword({
         password:
@@ -70,14 +70,18 @@ export class EditProfileComponent implements OnInit{
         this.formGroupChangePassword.get("repeatPassword")?.value,
 
       }).subscribe({
-        next: () => {
-          this.formGroupChangePassword.reset();
-          this.snackBar.open('Password was changed', 'OK', {
-            duration: 3000, panelClass: "snack-bar-bg-color-ok" });
-        },
-        error: error => this.formChangePasswordError = error.error.message}
+          next: () => {
+            this.formGroupChangePassword.reset();
+            this.snackBar.open('Password was changed', 'OK', {
+              duration: 3000, panelClass: "snack-bar-bg-color-ok"
+            });
+          },
+          error: error => this.formChangePasswordError = error.error.message
+        }
       );
-    } }
+    }
+  }
+
   private passwordIdentical(changePassword: any) {
     if (changePassword.password === changePassword.repeatPassword) {
       this.formChangePasswordError = "";

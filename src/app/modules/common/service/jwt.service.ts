@@ -7,6 +7,7 @@ import jwt_decode from 'jwt-decode';
 export class JwtService {
 
   isAdmin = false;
+
   constructor() {
   }
 
@@ -35,13 +36,14 @@ export class JwtService {
   }
 
   public getIsAdmin(): boolean {
-   this.isAdmin = localStorage.getItem('isAdmin') == true.toString();
+    this.isAdmin = localStorage.getItem('isAdmin') == true.toString();
     return this.isAdmin;
   }
+
   public setIsAdmin(isAdmin: boolean): void {
-    console.log("setIsAdmin: "+isAdmin);
+    console.log("setIsAdmin: " + isAdmin);
     this.isAdmin = isAdmin;
-    if(isAdmin)
-    localStorage.setItem('isAdmin', this.isAdmin.toString());
+    if (isAdmin)
+      localStorage.setItem('isAdmin', this.isAdmin.toString());
   }
 }

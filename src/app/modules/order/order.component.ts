@@ -84,9 +84,9 @@ export class OrderComponent implements OnInit {
   submitOrder() {
     if (this.firstFormGroup.valid && this.secondFormGroup.valid && this.deliveryFormGroup.valid //&& this.paymentFormGroup.valid
     ) {
-      console.log("p.get('shipment')?.value===" +this.deliveryFormGroup.get('shipment')?.value);
-      console.log("up.get('shipment')?.value.id===" +this.deliveryFormGroup.get('shipment')?.value.id);
-      console.log("up.get('shipment')===" +this.deliveryFormGroup.get('shipment'));
+      console.log("p.get('shipment')?.value===" + this.deliveryFormGroup.get('shipment')?.value);
+      console.log("up.get('shipment')?.value.id===" + this.deliveryFormGroup.get('shipment')?.value.id);
+      console.log("up.get('shipment')===" + this.deliveryFormGroup.get('shipment'));
 
       this.orderService.makeOrder({
 

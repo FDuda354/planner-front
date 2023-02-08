@@ -38,7 +38,6 @@ import {EditProfileComponent} from "./modules/profile/edit-profile/edit-profile.
 import {UserReviewsComponent} from "./modules/profile/user-reviews/user-reviews.component";
 
 
-
 const routes: Routes = [
   {
     path: '', component: DefaultComponent, children: [

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule} from "@angular/router";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {SharedModule} from "../../shared/shared.module";
@@ -7,8 +7,6 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {FullpageuserComponent} from "./fullpageuser.component";
 import {EditProfileComponent} from "../../modules/profile/edit-profile/edit-profile.component";
 import {UserReviewsComponent} from "../../modules/profile/user-reviews/user-reviews.component";
-
-
 
 
 @NgModule({
@@ -25,4 +23,5 @@ import {UserReviewsComponent} from "../../modules/profile/user-reviews/user-revi
     ReactiveFormsModule
   ]
 })
-export class FullpageuserModule { }
+export class FullpageuserModule {
+}

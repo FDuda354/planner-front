@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FullpageuserComponent } from './fullpageuser.component';
+import {FullpageuserComponent} from './fullpageuser.component';
 
 describe('FullpageuserComponent', () => {
   let component: FullpageuserComponent;
@@ -8,9 +8,9 @@ describe('FullpageuserComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FullpageuserComponent ]
+      declarations: [FullpageuserComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FullpageuserComponent);
     component = fixture.componentInstance;

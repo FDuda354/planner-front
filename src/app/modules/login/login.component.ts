@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.jwtService.isLoggedIn())
+    if (this.jwtService.isLoggedIn())
       this.router.navigate([this.REDIRECT_ROUTE]);
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.email]],
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         },
         error: err => {
           this.loginError = true;
-          if(err.error.message)
+          if (err.error.message)
             this.registerErrorMsg = err.error.message;
           else
             this.registerErrorMsg = "Something went wrong! Please try again later."
@@ -71,10 +71,10 @@ export class LoginComponent implements OnInit {
         },
         error: err => {
           this.registerError = true;
-          if(err.error.message)
+          if (err.error.message)
             this.registerErrorMsg = err.error.message;
           else
-          this.registerErrorMsg = "Something went wrong! Please try again later."
+            this.registerErrorMsg = "Something went wrong! Please try again later."
         }
       });
     }

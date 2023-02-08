@@ -3,11 +3,13 @@ button {
   margin-bottom: 10px;
 
 }
-.lostPasswordForm{
+
+.lostPasswordForm {
   width: 350px;
   margin-bottom: 30px;
 }
-.error{
+
+.error {
   padding: 5px 0;
   color: red;
 }

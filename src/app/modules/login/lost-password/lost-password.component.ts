@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './lost-password.component.html',
   styleUrls: ['./lost-password.component.css']
 })
-export class LostPasswordComponent implements OnInit{
+export class LostPasswordComponent implements OnInit {
 
   formGroup!: FormGroup;
   formError = "";
@@ -23,12 +23,13 @@ export class LostPasswordComponent implements OnInit{
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.hash = this.route.snapshot.params['hash'];
     this.formGroup = this.formBuilder.group({
-      email: ['', [Validators.required , Validators.email]]
+      email: ['', [Validators.required, Validators.email]]
     });
     this.formGroupChangePassword = this.formBuilder.group({
       password: ['', Validators.required],
@@ -37,14 +38,15 @@ export class LostPasswordComponent implements OnInit{
   }
 
   send() {
-    if(this.formGroup.valid){
+    if (this.formGroup.valid) {
       this.loginService.resetPassword(this.formGroup.value)
         .subscribe({
           next: result => {
             this.formError = "";
             this.formGroup.reset();
             this.snackBar.open('Email was send', 'OK', {
-              duration: 3000, panelClass: "snack-bar-bg-color-ok" });
+              duration: 3000, panelClass: "snack-bar-bg-color-ok"
+            });
             this.router.navigate(['/login']);
           },
           error: error => this.formError = error.error.message
@@ -52,7 +54,7 @@ export class LostPasswordComponent implements OnInit{
     }
   }
 
-  sendChangePassword(){
+  sendChangePassword() {
     if (this.formGroupChangePassword.valid && this.passwordIdentical(this.formGroupChangePassword.value)) {
       this.loginService.changePassword({
         password:
@@ -62,14 +64,18 @@ export class LostPasswordComponent implements OnInit{
         hash: this.hash
       }).subscribe({
           next: () => {
-        this.formGroupChangePassword.reset();
-        this.snackBar.open('Password was changed', 'OK', {
-          duration: 3000, panelClass: "snack-bar-bg-color-ok" });
-        },
-        error: error => this.formChangePasswordError = error.error.message}
+            this.formGroupChangePassword.reset();
+            this.snackBar.open('Password was changed', 'OK', {
+              duration: 3000, panelClass: "snack-bar-bg-color-ok"
+            });
+          },
+          error: error => this.formChangePasswordError = error.error.message
+        }
       );
       this.router.navigate(['/login']);
-    } }
+    }
+  }
+
   private passwordIdentical(changePassword: any) {
     if (changePassword.password === changePassword.repeatPassword) {
       this.formChangePasswordError = "";

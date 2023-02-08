@@ -16,7 +16,6 @@ import {ProfileAuthGuard} from "./modules/common/guard/profileAuthGuard";
 import {FullpageuserModule} from "./layouts/fullpageuser/fullpageuser.module";
 
 
-
 @NgModule({
   declarations: [
     AppComponent

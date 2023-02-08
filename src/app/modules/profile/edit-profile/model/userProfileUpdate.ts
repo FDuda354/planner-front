@@ -1,4 +1,3 @@
-export interface UserProfileUpdate
-{
-    image: string;
+export interface UserProfileUpdate {
+  image: string;
 }

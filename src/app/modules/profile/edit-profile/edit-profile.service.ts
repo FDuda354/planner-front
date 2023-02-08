@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {UploadResponse} from "../../common/model/uploadResponse";
 import {HttpClient} from "@angular/common/http";
-import {AdminProductUpdate} from "../../admin/admin-product/model/adminProductUpdate";
 import {UserProfileUpdate} from "./model/userProfileUpdate";
 
 @Injectable({
@@ -12,7 +11,8 @@ export class EditProfileService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+  }
 
   uploadImage(formData: FormData): Observable<UploadResponse> {
     return this.http.post<UploadResponse>("/api/profile/upload-image", formData);

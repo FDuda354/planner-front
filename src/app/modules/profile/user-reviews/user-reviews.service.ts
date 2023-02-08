@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Review} from "../../product-details/model/review";
@@ -10,8 +10,8 @@ export class UserReviewsService {
 
   constructor(
     private http: HttpClient
-
-  ) { }
+  ) {
+  }
 
   getUserReviews(): Observable<Array<Review>> {
     return this.http.get<Array<Review>>('/api/reviews');

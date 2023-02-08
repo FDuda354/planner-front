@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UserReviewsService} from "./user-reviews.service";
-import {JwtService} from "../../common/service/jwt.service";
 import {Review} from "../../product-details/model/review";
 import {ProfileService} from "../profile.service";
 
@@ -12,10 +11,12 @@ import {ProfileService} from "../profile.service";
 export class UserReviewsComponent implements OnInit {
 
   reviews!: Array<Review>;
+
   constructor(
     private userReviewsService: UserReviewsService,
     private profileService: ProfileService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.getUserReviews();
@@ -30,6 +31,7 @@ export class UserReviewsComponent implements OnInit {
   }
 
   private cache = new Map<number, string>();
+
   getUserImage(userId: number): string {
     if (this.cache.has(userId)) {
       return this.cache.get(userId)!;
@@ -38,9 +40,11 @@ export class UserReviewsComponent implements OnInit {
     let profileImage: string = '';
     this.profileService.getUserImage(userId)
       .subscribe(userProfileUpdate => {
-        if(userProfileUpdate == null || userProfileUpdate.image == null || userProfileUpdate.image == ''){
-          profileImage = 'avatar.gif';} else {
-          profileImage = userProfileUpdate.image;}
+        if (userProfileUpdate == null || userProfileUpdate.image == null || userProfileUpdate.image == '') {
+          profileImage = 'avatar.gif';
+        } else {
+          profileImage = userProfileUpdate.image;
+        }
         this.cache.set(userId, profileImage);
       });
 
