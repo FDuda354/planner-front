@@ -7,7 +7,7 @@
       <div flexLayout="row">
         <a routerLink="{{'/product/'+product.slug}}">
           <img *ngIf="!product.image" src="/assets/loader.gif" mat-card-md-image class="productImage">
-          <img *ngIf="product.image" src="{{'/api/data/productImage/'+ product?.image}}" mat-card-md-image
+          <img *ngIf="product.image" src="{{'https://shopbackend.dudios.pl/data/productImage/'+ product?.image}}" mat-card-md-image
                class="productImage">
         </a>
         <mat-card-content fxFlex class="productContent">

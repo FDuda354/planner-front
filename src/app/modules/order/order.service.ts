@@ -24,10 +24,10 @@ export class OrderService {
   }
 
   makeOrder(order: OrderDto): Observable<OrderSummary> {
-    return this.http.post<OrderSummary>("api/order", order);
+    return this.http.post<OrderSummary>("https://shopbackend.dudios.pl/order", order);
   }
 
   getInitData(): Observable<InitData> {
-    return this.http.get<InitData>("api/order/initOrder");
+    return this.http.get<InitData>("https://shopbackend.dudios.pl/order/initOrder");
   }
 }

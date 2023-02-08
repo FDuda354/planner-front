@@ -20,14 +20,14 @@ export class BasketService {
   }
 
   addProductToBasket(basketId: number, basketItem: any): Observable<BasketSummary> {
-    return this.http.put<BasketSummary>("/api/basket/" + basketId, basketItem);
+    return this.http.put<BasketSummary>("https://shopbackend.dudios.pl/basket/" + basketId, basketItem);
   }
 
   updateBasket(basketId: number, items: any[]): Observable<BasketSummary> {
-    return this.http.put<BasketSummary>("/api/basket/" + basketId + "/update", items);
+    return this.http.put<BasketSummary>("https://shopbackend.dudios.pl/basket/" + basketId + "/update", items);
   }
 
   removeBasketItem(id: any): Observable<void> {
-    return this.http.delete<void>("/api/basketItems/" + id);
+    return this.http.delete<void>("https://shopbackend.dudios.pl/basketItems/" + id);
   }
 }
