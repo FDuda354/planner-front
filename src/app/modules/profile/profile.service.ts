@@ -15,10 +15,10 @@ export class ProfileService {
   }
 
   getOrders(): Observable<Array<OrderDtoForUser>> {
-    return this.http.get<Array<OrderDtoForUser>>("https://shopbackend.dudios.pl/orders");
+    return this.http.get<Array<OrderDtoForUser>>("/api/orders");
   }
 
   getUserImage(userId: number): Observable<UserProfileUpdate> {
-    return this.http.get<UserProfileUpdate>(`https://shopbackend.dudios.pl/profile/${userId}/image`);
+    return this.http.get<UserProfileUpdate>(`/api/profile/${userId}/image`);
   }
 }

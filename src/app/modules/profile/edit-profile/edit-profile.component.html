@@ -19,7 +19,7 @@
     </form>
   </div>
   <div>
-    <img *ngIf="image" src="{{'https://shopbackend.dudios.pl/data/productImage/'+image}}" width="200"/>
+    <img *ngIf="image" src="{{'/api/data/productImage/'+image}}" width="200"/>
     <form [formGroup]="imageForm" (submit)="uploadFile()">
       <input type="file" [accept]="requiredFileTypes" (change)="onFileChange($event)">
       <button mat-flat-button color="primary">Upload Profile image</button>

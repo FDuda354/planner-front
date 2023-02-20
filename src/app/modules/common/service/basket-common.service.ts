@@ -14,6 +14,6 @@ export class BasketCommonService {
   }
 
   getBasket(id: number): Observable<BasketSummary> {
-    return this.http.get<BasketSummary>("https://shopbackend.dudios.pl/basket/" + id);
+    return this.http.get<BasketSummary>("/api/basket/" + id);
   }
 }

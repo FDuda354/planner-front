@@ -13,11 +13,11 @@ export class ProductDetailsService {
   }
 
   getProductDetails(slug: string): Observable<ProductDetails> {
-    return this.http.get<ProductDetails>(`https://shopbackend.dudios.pl/product/${slug}`);
+    return this.http.get<ProductDetails>(`/api/product/${slug}`);
   }
 
   addReview(review: Review): Observable<Review> {
-    return this.http.post<Review>(`https://shopbackend.dudios.pl/review`, review);
+    return this.http.post<Review>(`/api/review`, review);
   }
 
 

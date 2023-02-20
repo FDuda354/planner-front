@@ -13,6 +13,6 @@ export class AdminLoginService {
   }
 
   login(credentials: any): Observable<any> {
-    return this.http.post('https://shopbackend.dudios.pl/login', credentials);
+    return this.http.post('/api/login', credentials);
   }
 }

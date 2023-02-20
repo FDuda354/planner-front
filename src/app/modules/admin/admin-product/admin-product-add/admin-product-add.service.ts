@@ -12,7 +12,7 @@ export class AdminProductAddService {
   }
 
   saveNewProduct(newProduct: AdminProductUpdate): Observable<AdminProductUpdate> {
-    return this.http.post<AdminProductUpdate>("https://shopbackend.dudios.pl/admin/product", newProduct);
+    return this.http.post<AdminProductUpdate>("/api/admin/product", newProduct);
   }
 
 }

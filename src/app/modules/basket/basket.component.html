@@ -14,7 +14,7 @@
           <div class="cart-col-1">
             <a routerLink="{{'/products/' + item.value?.product?.slug}}">
               <img *ngIf="!item.value?.product?.image" src="/assets/image-placeholder.png" width="100">
-              <img *ngIf="item.value?.product?.image" src="{{'https://shopbackend.dudios.pl/data/productImage/' + item.value?.product?.image}}"
+              <img *ngIf="item.value?.product?.image" src="{{'/api/data/productImage/' + item.value?.product?.image}}"
                    width="100">
             </a>
           </div>

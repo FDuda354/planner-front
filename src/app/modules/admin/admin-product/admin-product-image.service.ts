@@ -12,6 +12,6 @@ export class AdminProductImageService {
   }
 
   uploadImage(formData: FormData): Observable<UploadResponse> {
-    return this.http.post<UploadResponse>("https://shopbackend.dudios.pl/admin/product/upload-image", formData);
+    return this.http.post<UploadResponse>("/api/admin/product/upload-image", formData);
   }
 }

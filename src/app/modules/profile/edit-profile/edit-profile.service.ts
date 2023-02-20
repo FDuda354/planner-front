@@ -15,14 +15,14 @@ export class EditProfileService {
   }
 
   uploadImage(formData: FormData): Observable<UploadResponse> {
-    return this.http.post<UploadResponse>("https://shopbackend.dudios.pl/profile/upload-image", formData);
+    return this.http.post<UploadResponse>("/api/profile/upload-image", formData);
   }
 
   updateProfileImage(value: UserProfileUpdate) {
-    return this.http.put<UserProfileUpdate>("https://shopbackend.dudios.pl/profile/image", value);
+    return this.http.put<UserProfileUpdate>("/api/profile/image", value);
   }
 
   changePassword(passwordObject: any): Observable<any> {
-    return this.http.post("https://shopbackend.dudios.pl/profile/changePassword", passwordObject);
+    return this.http.post("/api/profile/changePassword", passwordObject);
   }
 }

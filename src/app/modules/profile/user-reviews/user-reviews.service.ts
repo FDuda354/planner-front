@@ -14,10 +14,10 @@ export class UserReviewsService {
   }
 
   getUserReviews(): Observable<Array<Review>> {
-    return this.http.get<Array<Review>>('https://shopbackend.dudios.pl/reviews');
+    return this.http.get<Array<Review>>('/api/reviews');
   }
 
   removeReview(id: number) {
-    return this.http.delete(`https://shopbackend.dudios.pl/review/${id}`);
+    return this.http.delete(`/api/review/${id}`);
   }
 }

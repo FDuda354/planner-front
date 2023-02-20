@@ -47,7 +47,6 @@ const routes: Routes = [
       {path: 'category/:slug', component: CategoryComponent},
       {path: 'basket', component: BasketComponent},
       {path: 'order', component: OrderComponent},
-      //{path: 'profile', component: ProfileComponent, canActivate: [ProfileAuthGuard]},
     ]
   },
   {

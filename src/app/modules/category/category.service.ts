@@ -12,6 +12,6 @@ export class CategoryService {
   }
 
   getProductsInCategory(slug: string, page: number, size: number): Observable<CategoryProducts> {
-    return this.http.get<CategoryProducts>(`https://shopbackend.dudios.pl/category/${slug}/products?page=${page}&size=${size}`);
+    return this.http.get<CategoryProducts>(`/api/category/${slug}/products?page=${page}&size=${size}`);
   }
 }

@@ -13,6 +13,6 @@ export class ProductService {
   }
 
   getProducts(page: number, size: number): Observable<Page<Product>> {
-    return this.http.get<Page<Product>>(`https://shopbackend.dudios.pl/products?page=${page}&size=${size}`);
+    return this.http.get<Page<Product>>(`/api/products?page=${page}&size=${size}`);
   }
 }

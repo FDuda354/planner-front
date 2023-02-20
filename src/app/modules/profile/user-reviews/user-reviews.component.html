@@ -4,7 +4,7 @@
       <mat-card-title>{{review.authorName}}</mat-card-title>
       <!--        TODO: add user rating-->
       <mat-card-subtitle>Rating</mat-card-subtitle>
-      <img mat-card-sm-image src="{{'https://shopbackend.dudios.pl/data/productImage/'+ getUserImage(review.userId)}}">
+      <img mat-card-sm-image src="{{'/api/data/productImage/'+ getUserImage(review.userId)}}">
     </mat-card-title-group>
     <mat-card-content>
       {{review.content}}

@@ -12,6 +12,6 @@ export class SidebarService {
   }
 
   getCategories(): Observable<Array<SidebarCategory>> {
-    return this.http.get<Array<SidebarCategory>>("https://shopbackend.dudios.pl/categories");
+    return this.http.get<Array<SidebarCategory>>("/api/categories");
   }
 }

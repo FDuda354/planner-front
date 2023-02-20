@@ -13,28 +13,28 @@ export class AdminOrderService {
   }
 
   getOrders(pageIndex: number, pageSize: number): Observable<Page<AdminOrder>> {
-    return this.http.get<Page<AdminOrder>>(`https://shopbackend.dudios.pl/admin/orders?page=${pageIndex}&size=${pageSize}`);
+    return this.http.get<Page<AdminOrder>>(`/api/admin/orders?page=${pageIndex}&size=${pageSize}`);
   }
 
   getOrder(id: number): Observable<AdminOrder> {
-    return this.http.get<AdminOrder>("https://shopbackend.dudios.pl/admin/order/" + id);
+    return this.http.get<AdminOrder>("/api/admin/order/" + id);
   }
 
   changeStatus(id: number, order: AdminOrder): Observable<void> {
-    return this.http.patch<void>("https://shopbackend.dudios.pl/admin/order/" + id, order);
+    return this.http.patch<void>("/api/admin/order/" + id, order);
   }
 
   getInitData(): Observable<any> {
-    return this.http.get<any>("https://shopbackend.dudios.pl/admin/orders/initData");
+    return this.http.get<any>("/api/admin/orders/initData");
   }
 
   exportOrders(from: string, to: string, orderStatus: string): Observable<any> {
-    return this.http.get(`https://shopbackend.dudios.pl/admin/orders/export?from=${from}&to=${to}&orderStatus=${orderStatus}`,
+    return this.http.get(`/api/admin/orders/export?from=${from}&to=${to}&orderStatus=${orderStatus}`,
       {responseType: 'blob', observe: 'response'}
     );
   }
 
   getSalesStats(): Observable<any> {
-    return this.http.get(`https://shopbackend.dudios.pl/admin/orders/stats`);
+    return this.http.get(`/api/admin/orders/stats`);
   }
 }
