@@ -12,11 +12,11 @@ export class AdminProductUpdateService {
   }
 
   getProduct(id: number): Observable<AdminProductUpdate> {
-    return this.http.get<AdminProductUpdate>("/api/admin/product/" + id);
+    return this.http.get<AdminProductUpdate>("https://shopbackend.dudios.pl/admin/product/" + id);
   }
 
   updateProduct(id: number, value: AdminProductUpdate) {
-    return this.http.put<AdminProductUpdate>("/api/admin/product/" + id, value);
+    return this.http.put<AdminProductUpdate>("https://shopbackend.dudios.pl/admin/product/" + id, value);
   }
 
 }

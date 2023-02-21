@@ -13,6 +13,7 @@ import {BasketComponent} from "../../modules/basket/basket.component";
 import {OrderComponent} from "../../modules/order/order.component";
 import {ReplacePipe} from "../../modules/common/pipe/preplacePipe";
 import {ProfileComponent} from "../../modules/profile/profile.component";
+import {OrderNotificationComponent} from "../../modules/order/order-notification/order-notification.component";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {ProfileComponent} from "../../modules/profile/profile.component";
     BasketComponent,
     OrderComponent,
     ReplacePipe,
-    ProfileComponent
+    ProfileComponent,
+    OrderNotificationComponent
   ],
   imports: [
     CommonModule,

@@ -33,7 +33,7 @@
             <div class="cart-col-1">
               <a routerLink="{{'/products/' + item.product?.slug}}">
                 <img *ngIf="!item.product?.image" src="/assets/image-placeholder.png" width="100">
-                <img *ngIf="item.product?.image" src="{{'/api/data/productImage/' + item.product?.image}}"
+                <img *ngIf="item.product?.image" src="{{'https://shopbackend.dudios.pl/data/productImage/' + item.product?.image}}"
                      width="100">
               </a>
             </div>

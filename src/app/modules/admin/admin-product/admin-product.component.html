@@ -15,7 +15,7 @@
     <td mat-cell *matCellDef="let element">
       <div flexLayout="row">
         <img *ngIf="!element.image" src="/assets/loader.gif" mat-card-lg-image class="productAdminImage">
-        <img *ngIf="element.image" src="{{'/api/data/productImage/'+ element?.image}}" mat-card-md-image
+        <img *ngIf="element.image" src="{{'https://shopbackend.dudios.pl/data/productImage/'+ element?.image}}" mat-card-md-image
              class="productAdminImage">
       </div>
     </td>

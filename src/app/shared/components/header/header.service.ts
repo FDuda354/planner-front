@@ -13,6 +13,6 @@ export class HeaderService {
   }
 
   getBasketProductsCount(basketId: number): Observable<Number> {
-    return this.http.get<Number>("/api/basketItems/counter/" + basketId);
+    return this.http.get<Number>("https://shopbackend.dudios.pl/basketItems/counter/" + basketId);
   }
 }

@@ -36,6 +36,7 @@ import {LostPasswordComponent} from "./modules/login/lost-password/lost-password
 import {FullpageuserComponent} from "./layouts/fullpageuser/fullpageuser.component";
 import {EditProfileComponent} from "./modules/profile/edit-profile/edit-profile.component";
 import {UserReviewsComponent} from "./modules/profile/user-reviews/user-reviews.component";
+import {OrderNotificationComponent} from "./modules/order/order-notification/order-notification.component";
 
 
 const routes: Routes = [
@@ -47,6 +48,7 @@ const routes: Routes = [
       {path: 'category/:slug', component: CategoryComponent},
       {path: 'basket', component: BasketComponent},
       {path: 'order', component: OrderComponent},
+      {path: 'order/notification/:orderHash', component: OrderNotificationComponent},
     ]
   },
   {

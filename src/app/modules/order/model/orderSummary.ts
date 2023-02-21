@@ -6,4 +6,5 @@ export interface OrderSummary {
   status: string;
   grossValue: number;
   payment: Payment;
+  redirectUrl: string;
 }

@@ -3,7 +3,7 @@
     <div fxLayout="row" fxFlex fxLayoutGap="20">
       <div>
         <img *ngIf="!productDetails.image" src="/assets/loader.gif" width="350">
-        <img *ngIf="productDetails.image" src="{{'/api/data/productImage/'+ productDetails.image}}" width="350">
+        <img *ngIf="productDetails.image" src="{{'https://shopbackend.dudios.pl/data/productImage/'+ productDetails.image}}" width="350">
       </div>
       <div fxLayout="column" fxFlex>
         <h1>{{productDetails.name}}</h1>
@@ -31,7 +31,7 @@
           <!--        TODO: add user rating-->
           <mat-card-subtitle>Rating</mat-card-subtitle>
           <img *ngIf="!review.userId" mat-card-sm-image src="/assets/avatar.gif">
-          <img *ngIf="review.userId" mat-card-sm-image src="{{'/api/data/productImage/'+ getUserImage(review.userId)}}">
+          <img *ngIf="review.userId" mat-card-sm-image src="{{'https://shopbackend.dudios.pl/data/productImage/'+ getUserImage(review.userId)}}">
 
         </mat-card-title-group>
         <mat-card-content>

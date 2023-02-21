@@ -15,6 +15,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule} from "@angular/material-moment-adapter";
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [],
@@ -34,7 +35,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatRadioModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressSpinnerModule
 
   ],
   exports: [
@@ -52,7 +54,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatRadioModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}

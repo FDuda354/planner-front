@@ -103,10 +103,16 @@ export class OrderComponent implements OnInit {
 
       } as OrderDto).subscribe({
         next: orderSummary => {
-          this.orderSummary = orderSummary;
+
           this.basketIconService.setDefaultBasketIcon();
           this.cookieService.delete("basketId");
           this.errorMessage = false;
+          if (orderSummary.redirectUrl) {
+            window.location.href = orderSummary.redirectUrl;
+          }
+          else {
+            this.orderSummary = orderSummary;
+          }
 
         }, error: error => {
           this.errorMessage = true;
