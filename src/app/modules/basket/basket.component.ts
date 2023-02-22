@@ -93,6 +93,7 @@ export class BasketComponent implements OnInit {
 
   private maptoRequestListDto(): any[] {
     let items: Array<BasketSummaryItem> = this.formGroup.get('items')?.value;
+    items = items.sort((a, b) => a.product.name.localeCompare(b.product.name));
     return items.map(item => ({
       productId: item.product.id,
       quantity: item.quantity
