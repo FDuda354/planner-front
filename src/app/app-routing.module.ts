@@ -16,6 +16,8 @@ import {CalendarComponent} from "./modules/calendar/calendar.component";
 import {TodolistComponent} from "./modules/todolist/todolist.component";
 import {InvoiceComponent} from "./modules/invoice/invoice.component";
 import {ProfileComponent} from "./modules/profile/profile.component";
+import {AddtaskComponent} from "./modules/todolist/addtask/addtask.component";
+import {UpdatetaskComponent} from "./modules/todolist/updatetask/updatetask.component";
 
 
 const routes: Routes = [
@@ -24,6 +26,8 @@ const routes: Routes = [
       {path: '', component: HomeComponent, canActivate: [AdminAuthGuard]},
       {path: 'calendar', component: CalendarComponent, canActivate: [AdminAuthGuard]},
       {path: 'todolist', component: TodolistComponent, canActivate: [AdminAuthGuard]},
+      {path: 'task/add', component: AddtaskComponent, canActivate: [AdminAuthGuard]},
+      {path: 'task/update/:id', component: UpdatetaskComponent, canActivate: [AdminAuthGuard]},
       {path: 'invoicemanager', component: InvoiceComponent, canActivate: [AdminAuthGuard]},
       {path: 'profile', component: ProfileComponent, canActivate: [AdminAuthGuard]},
 

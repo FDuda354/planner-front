@@ -1,0 +1,24 @@
+<form [formGroup]="formGroup" fxLayout="column" (submit)="submit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Task Name</mat-label>
+    <input matInput placeholder="Input new task name" formControlName="name">
+    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+      <mat-error *ngIf="name?.errors?.['required']">Task name is required</mat-error>
+      <mat-error *ngIf="name?.errors?.['minlength']">Task name must be at least 2 characters long</mat-error>
+      <mat-error *ngIf="name?.errors?.['maxlength']">Task name must be at most 255 characters long</mat-error>
+    </div>
+  </mat-form-field>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Input deadline</mat-label>
+      <input matInput [matDatepicker]="dp3" [disabled]="true" formControlName="deadline">
+      <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+      <mat-datepicker #dp3 [disabled]="false"></mat-datepicker>
+    </mat-form-field>
+  </p>
+
+  <div fxLayoutAlign="end">
+    <button mat-button color="warn" (click)="onCancel()">Cancel</button>
+    <button mat-button color="primary" [disabled]="!formGroup.valid">Add</button>
+  </div>
+</form>
