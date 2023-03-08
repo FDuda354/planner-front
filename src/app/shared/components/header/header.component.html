@@ -1,11 +1,10 @@
 <header fxLayoutAlign="start center">
   <div fxFlex fxLayoutAlign="start end" fxLayoutGap="15">
-    <mat-icon color="accent" class="logoicon">store</mat-icon>
+    <mat-icon color="primary" class="logoicon">book</mat-icon>
     <span class="logo">{{title}}</span>
   </div>
   <div fxLayoutAlign="start center" fxLayoutGap="15">
     <button mat-raised-button color="primary" routerLink="">Home</button>
-    <button mat-raised-button color="primary" routerLink="/products">Products</button>
     <span></span>
     <div *ngIf="isLogged" fxLayoutGap="10">
       <button mat-raised-button color="primary" routerLink="/login">
@@ -18,10 +17,5 @@
     <div *ngIf="!isLogged">
       <button mat-raised-button color="primary" routerLink="/login">Login</button>
     </div>
-    <a routerLink="/basket">
-      <mat-icon color="accent" class="shoppbasket" matBadge="{{basketProductsCount}}" matBadgeColor="warn">
-        shopping_basket
-      </mat-icon>
-    </a>
   </div>
 </header>
