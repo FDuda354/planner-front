@@ -16,7 +16,9 @@
       <mat-datepicker #dp3 [disabled]="false"></mat-datepicker>
     </mat-form-field>
   </p>
-
+    <p>
+      <mat-checkbox formControlName="shouldNotify">Do you want email notify one day before deadline?</mat-checkbox>
+    </p>
   <div fxLayoutAlign="end">
     <button mat-button color="warn" (click)="onCancel()">Cancel</button>
     <button mat-button color="primary" [disabled]="!formGroup.valid">Add</button>

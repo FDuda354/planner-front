@@ -6,7 +6,12 @@ import {TodolistService} from "./todolist.service";
 import {startWith, switchMap} from "rxjs";
 import {AdminConfirmDialogService} from "../admin/common/service/admin-confirm-dialog.service";
 import {MatSort, MatSortable} from "@angular/material/sort";
+import lottie from 'lottie-web';
+import { defineElement } from 'lord-icon-element';
 
+
+// define "lord-icon" custom element with default properties
+defineElement(lottie.loadAnimation);
 
 @Component({
   selector: 'app-todolist',
@@ -19,6 +24,7 @@ export class TodolistComponent implements AfterViewInit{
   totalElements: number = 0;
   dataSource!: MatTableDataSource<Task>;
   @ViewChild(MatSort) sort!: MatSort;
+
 
   constructor(
     private todoListService: TodolistService,
@@ -48,7 +54,7 @@ export class TodolistComponent implements AfterViewInit{
   }
 
   confirmDelete(id: number) {
-    this.adminConfirmDialogService.openDialog("Are you done this task?")
+    this.adminConfirmDialogService.openDialog("delete this task?")
       .afterClosed()
       .subscribe(confirmed => {
         if (confirmed) {
@@ -59,4 +65,9 @@ export class TodolistComponent implements AfterViewInit{
       });
   }
 
+  changeStatus(completed: boolean, id: number) {
+    this.todoListService.changeStatus(id, completed).subscribe(() => {
+      this.paginator.page.emit();
+    });
+  }
 }

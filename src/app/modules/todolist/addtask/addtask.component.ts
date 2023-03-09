@@ -29,6 +29,7 @@ export class AddtaskComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(200)]],
       deadline: [null, [Validators.required]],
+      shouldNotify: [false],
     });
   }
 
@@ -36,6 +37,7 @@ export class AddtaskComponent implements OnInit {
     this.todolistService.addNewTask({
       name: this.formGroup.get('name')?.value,
       deadline: this.formGroup.get('deadline')?.value,
+      notify: this.formGroup.get('shouldNotify')?.value,
     } as Task).subscribe({
       next: task => {
         this.router.navigate(['/todolist'])
@@ -52,6 +54,9 @@ export class AddtaskComponent implements OnInit {
   }
   get deadline() {
     return this.formGroup.get('deadline');
+  }
+  get shouldNotify() {
+    return this.formGroup.get('shouldNotify');
   }
   onCancel() {
     this.router.navigate(['/todolist']);

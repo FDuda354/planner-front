@@ -1,49 +1,61 @@
-<div fxLayout="row">
-  <div fxFlex>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="login.component.css">
+</head>
 
-    <form [formGroup]="loginForm" fxLayout="column" (submit)="login()" class="loginForm">
-      <h2>Login</h2>
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="username">
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-<!--        <input type="password" matInput formControlName="password">-->
-      </mat-form-field>
-      <button mat-flat-button color="primary">Login</button>
-      <div *ngIf="loginError">
-        <mat-error>Invalid login or password</mat-error>
-      </div>
-      <div class="lostPassword">
-        <a routerLink="/lostPassword">Forgot password?</a>
-      </div>
-    </form>
 
-  </div>
-  <div fxFlex>
-    <form [formGroup]="registerForm" fxLayout="column" (submit)="register()" class="registerForm">
-      <h2>Register</h2>
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="username">
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="password">
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Repeat password</mat-label>
-        <input type="password" matInput formControlName="confirmPassword" placeholder="Repeat password">
-      </mat-form-field>
-      <button mat-flat-button color="primary">Register</button>
-      <div *ngIf="registerError">
-        <mat-error>{{registerErrorMsg}}</mat-error>
-      </div>
-    </form>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <form [formGroup]="loginForm" (submit)="login()" class="loginForm">
+        <h2>Login</h2>
+        <mat-form-field appearance="fill" style="min-width: 300px">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="username">
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="min-width: 300px">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" >
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+
+        </mat-form-field>
+        <button mat-flat-button color="primary">Login</button>
+        <div *ngIf="loginError">
+          <mat-error>Invalid login or password</mat-error>
+        </div>
+        <div class="lostPassword">
+          <a routerLink="/lostPassword">Forgot password?</a>
+        </div>
+      </form>
+
+    </div>
+    <div class="col-md-6">
+
+      <form [formGroup]="registerForm" (submit)="register()" class="registerForm">
+        <h2>Register</h2>
+        <mat-form-field appearance="fill" style="min-width: 300px">
+          <mat-label>Email</mat-label>
+          <input matInput [type]="'text'" formControlName="username" placeholder="Enter email">
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="min-width: 300px">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password" placeholder="Enter password">
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="min-width: 300px">
+          <mat-label>Repeat password</mat-label>
+          <input type="password" matInput formControlName="confirmPassword" placeholder="Repeat password">
+        </mat-form-field>
+        <br>
+        <button mat-flat-button color="primary">Register</button>
+        <div *ngIf="registerError">
+          <mat-error>{{registerErrorMsg}}</mat-error>
+        </div>
+      </form>
+
+    </div>
   </div>
 </div>
+

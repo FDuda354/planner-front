@@ -1,7 +1,6 @@
 :host {
-  background: #292b31;
+  background: linear-gradient(to bottom, #9BD7F1, #32B3EB, #0072C6, #003C6E);
   padding: 20px;
-  color: #aaa;
 }
 
 .footerCopy {

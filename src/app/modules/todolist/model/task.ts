@@ -3,6 +3,7 @@ export interface Task {
   name: string;
   deadline: Date;
   completed: boolean;
+  notify: boolean;
   userId: number;
 
 }

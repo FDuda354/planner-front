@@ -31,4 +31,9 @@ export class TodolistService {
   getTaskById(id: number): Observable<Task> {
     return this.http.get<Task>(`/api/task/${id}`);
   }
+
+
+  changeStatus(id: number, completed: boolean) {
+    return this.http.patch(`/api/task/${id}?completed=${completed}`, null);
+  }
 }

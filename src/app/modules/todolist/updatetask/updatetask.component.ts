@@ -30,15 +30,18 @@ export class UpdatetaskComponent implements OnInit{
     this.formGroup = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(200)]],
       deadline: [null, [Validators.required]],
+      shouldNotify: [false],
     });
     this.getTask();
   }
 
   submit() {
     let id = Number(this.route.snapshot.params['id']);
+
     this.todolistService.updateTask(id, {
       name: this.formGroup.get('name')?.value,
       deadline: this.formGroup.get('deadline')?.value,
+      notify: this.formGroup.get('shouldNotify')?.value,
     } as Task).subscribe({
       next: task => {
         this.router.navigate(['/todolist'])
@@ -52,6 +55,9 @@ export class UpdatetaskComponent implements OnInit{
 
   get name() {
     return this.formGroup.get('name');
+  }
+  get shouldNotify() {
+    return this.formGroup.get('shouldNotify');
   }
   get deadline() {
     return this.formGroup.get('deadline');
@@ -67,6 +73,7 @@ export class UpdatetaskComponent implements OnInit{
         this.formGroup.setValue({
           name: task.name,
           deadline: task.deadline,
+          shouldNotify: task.notify
         })
       },
       error: err => {
