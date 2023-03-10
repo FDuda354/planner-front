@@ -18,6 +18,8 @@ import {InvoiceComponent} from "./modules/invoice/invoice.component";
 import {ProfileComponent} from "./modules/profile/profile.component";
 import {AddtaskComponent} from "./modules/todolist/addtask/addtask.component";
 import {UpdatetaskComponent} from "./modules/todolist/updatetask/updatetask.component";
+import {UpdateInvoiceComponent} from "./modules/invoice/update-invoice/update-invoice.component";
+import {AddInvoiceComponent} from "./modules/invoice/add-invoice/add-invoice.component";
 
 
 const routes: Routes = [
@@ -28,7 +30,9 @@ const routes: Routes = [
       {path: 'todolist', component: TodolistComponent, canActivate: [AdminAuthGuard]},
       {path: 'task/add', component: AddtaskComponent, canActivate: [AdminAuthGuard]},
       {path: 'task/update/:id', component: UpdatetaskComponent, canActivate: [AdminAuthGuard]},
-      {path: 'invoicemanager', component: InvoiceComponent, canActivate: [AdminAuthGuard]},
+      {path: 'invoices', component: InvoiceComponent, canActivate: [AdminAuthGuard]},
+      {path: 'invoice/add', component: AddInvoiceComponent, canActivate: [AdminAuthGuard]},
+      {path: 'invoice/update/:slug', component: UpdateInvoiceComponent, canActivate: [AdminAuthGuard]},
       {path: 'profile', component: ProfileComponent, canActivate: [AdminAuthGuard]},
 
     ]

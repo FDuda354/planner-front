@@ -16,6 +16,8 @@ import {ProfileComponent} from "../../modules/profile/profile.component";
 import {MatSortModule} from "@angular/material/sort";
 import {AddtaskComponent} from "../../modules/todolist/addtask/addtask.component";
 import {UpdatetaskComponent} from "../../modules/todolist/updatetask/updatetask.component";
+import {UpdateInvoiceComponent} from "../../modules/invoice/update-invoice/update-invoice.component";
+import {AddInvoiceComponent} from "../../modules/invoice/add-invoice/add-invoice.component";
 
 
 @NgModule({
@@ -28,16 +30,18 @@ import {UpdatetaskComponent} from "../../modules/todolist/updatetask/updatetask.
     InvoiceComponent,
     ProfileComponent,
     AddtaskComponent,
-    UpdatetaskComponent
+    UpdatetaskComponent,
+    UpdateInvoiceComponent,
+    AddInvoiceComponent
   ],
-    imports: [
-        CommonModule,
-        RouterModule,
-        FlexLayoutModule,
-        SharedModule,
-        ReactiveFormsModule,
-        MatSortModule
-    ]
+  imports: [
+    CommonModule,
+    RouterModule,
+    FlexLayoutModule,
+    SharedModule,
+    ReactiveFormsModule,
+    MatSortModule
+  ]
 })
 export class DefaultModule {
 }

@@ -21,7 +21,6 @@ export class AddtaskComponent implements OnInit {
     private snackBar: MatSnackBar,
     private todolistService: TodolistService,
     private adminMessageService: AdminMessageService,
-
   ) {
   }
 
@@ -52,12 +51,15 @@ export class AddtaskComponent implements OnInit {
   get name() {
     return this.formGroup.get('name');
   }
+
   get deadline() {
     return this.formGroup.get('deadline');
   }
+
   get shouldNotify() {
     return this.formGroup.get('shouldNotify');
   }
+
   onCancel() {
     this.router.navigate(['/todolist']);
   }

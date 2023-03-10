@@ -14,10 +14,6 @@ import {JwtInterceptor} from "./modules/common/interceptor/jwtInterceptor";
 import {AdminAuthGuard} from "./modules/admin/common/guard/adminAuthGuard";
 import {ProfileAuthGuard} from "./modules/common/guard/profileAuthGuard";
 import {FullpageuserModule} from "./layouts/fullpageuser/fullpageuser.module";
-import { ProfileComponent } from './modules/profile/profile.component';
-import { AddtaskComponent } from './modules/todolist/addtask/addtask.component';
-import { UpdatetaskComponent } from './modules/todolist/updatetask/updatetask.component';
-
 
 
 @NgModule({

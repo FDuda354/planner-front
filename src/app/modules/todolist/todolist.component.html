@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="todolist.component.css">
 </head>
 
-<body>
+
 <h1>Tasks:</h1>
 <div fxLayoutAlign="end">
   <button mat-raised-button color="primary" routerLink="/task/add">Add New Task
@@ -37,7 +37,8 @@
         </div>
         <div *ngIf="!row.completed">
           <img src="assets/static-uncheck.png" onmouseover="this.src='assets/uncheck.gif'"
-               onmouseout="this.src='assets/static-uncheck.png'" (click)="changeStatus(!row.completed, row.id)" width="45"
+               onmouseout="this.src='assets/static-uncheck.png'" (click)="changeStatus(!row.completed, row.id)"
+               width="45"
                height="45">
 
         </div>
@@ -72,4 +73,4 @@
 
 </div>
 
-</body>
+

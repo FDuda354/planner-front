@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Page} from "../common/model/page";
@@ -12,7 +12,7 @@ export class TodolistService {
   constructor(private http: HttpClient) {
   }
 
-  getTasks(page: number, size: number): Observable<Page<Task>>{
+  getTasks(page: number, size: number): Observable<Page<Task>> {
     return this.http.get<Page<Task>>(`/api/tasks?page=${page}&size=${size}`);
   }
 
@@ -24,7 +24,7 @@ export class TodolistService {
     return this.http.delete(`/api/task/${id}`);
   }
 
-  updateTask(id: number, param2: Task): Observable<Task>  {
+  updateTask(id: number, param2: Task): Observable<Task> {
     return this.http.put<Task>(`/api/task/${id}`, param2);
   }
 

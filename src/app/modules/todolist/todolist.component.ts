@@ -5,9 +5,9 @@ import {Task} from "./model/task";
 import {TodolistService} from "./todolist.service";
 import {startWith, switchMap} from "rxjs";
 import {AdminConfirmDialogService} from "../admin/common/service/admin-confirm-dialog.service";
-import {MatSort, MatSortable} from "@angular/material/sort";
+import {MatSort} from "@angular/material/sort";
 import lottie from 'lottie-web';
-import { defineElement } from 'lord-icon-element';
+import {defineElement} from 'lord-icon-element';
 
 
 // define "lord-icon" custom element with default properties
@@ -18,7 +18,7 @@ defineElement(lottie.loadAnimation);
   templateUrl: './todolist.component.html',
   styleUrls: ['./todolist.component.css']
 })
-export class TodolistComponent implements AfterViewInit{
+export class TodolistComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   displayedColumns: string[] = ['name', 'deadline', 'completed', "actions"];
   totalElements: number = 0;
@@ -29,7 +29,8 @@ export class TodolistComponent implements AfterViewInit{
   constructor(
     private todoListService: TodolistService,
     private adminConfirmDialogService: AdminConfirmDialogService,
-  ) {}
+  ) {
+  }
 
   ngAfterViewInit(): void {
     this.paginator.page.pipe(
@@ -44,6 +45,7 @@ export class TodolistComponent implements AfterViewInit{
 
     });
   }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

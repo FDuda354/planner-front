@@ -11,7 +11,7 @@ import {Task} from "../model/task";
   templateUrl: './updatetask.component.html',
   styleUrls: ['./updatetask.component.css']
 })
-export class UpdatetaskComponent implements OnInit{
+export class UpdatetaskComponent implements OnInit {
   formGroup!: FormGroup;
 
 
@@ -22,7 +22,6 @@ export class UpdatetaskComponent implements OnInit{
     private todolistService: TodolistService,
     private adminMessageService: AdminMessageService,
     private route: ActivatedRoute,
-
   ) {
   }
 
@@ -56,12 +55,15 @@ export class UpdatetaskComponent implements OnInit{
   get name() {
     return this.formGroup.get('name');
   }
+
   get shouldNotify() {
     return this.formGroup.get('shouldNotify');
   }
+
   get deadline() {
     return this.formGroup.get('deadline');
   }
+
   onCancel() {
     this.router.navigate(['/todolist']);
   }

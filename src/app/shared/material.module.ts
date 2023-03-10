@@ -17,6 +17,7 @@ import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule} from "@angular/mat
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatStepperModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
+    MatExpansionModule
 
   ],
   exports: [
@@ -59,7 +61,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatMomentDateModule,
     MatStepperModule,
     MatProgressSpinnerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatExpansionModule
   ],
   providers: [
     {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}

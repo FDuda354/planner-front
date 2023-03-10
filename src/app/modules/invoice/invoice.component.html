@@ -1,1 +1,119 @@
-<p>invoice works!</p>
+<h1>Invoices:</h1>
+<div fxLayoutAlign="end">
+  <button mat-raised-button color="primary" routerLink="/invoice/add">Add New Invoice
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" #input>
+</mat-form-field>
+<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef> Title</th>
+    <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+  </ng-container>
+  <ng-container matColumnDef="companyName">
+    <th mat-header-cell *matHeaderCellDef> Company Name</th>
+    <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="companyNIP">
+    <th mat-header-cell *matHeaderCellDef> Company NIP</th>
+    <td mat-cell *matCellDef="let element"> {{element.companyNIP}} </td>
+  </ng-container>
+  <ng-container matColumnDef="date">
+
+    <th mat-header-cell *matHeaderCellDef> Date</th>
+    <td mat-cell *matCellDef="let element"> {{element.date | date:'dd-MM-yyyy'}} </td>
+  </ng-container>
+  <ng-container matColumnDef="priceBrutto">
+    <th mat-header-cell *matHeaderCellDef> Price Brutto</th>
+    <td mat-cell *matCellDef="let element"> {{element.priceBrutto}}PLN</td>
+  </ng-container>
+  <ng-container matColumnDef="vat">
+    <th mat-header-cell *matHeaderCellDef> VAT</th>
+    <td mat-cell *matCellDef="let element"> {{element.vat}}%</td>
+  </ng-container>
+  <ng-container matColumnDef="priceNetto">
+    <th mat-header-cell *matHeaderCellDef> Price Netto</th>
+    <td mat-cell *matCellDef="let element"> {{element.priceNetto}}PLN</td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button aria-label="expand row"
+              (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+        <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+        <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+      </button>
+      <button mat-icon-button [routerLink]="['/invoice/update/',element.slug]">
+        <mat-icon color="primary">edit</mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="confirmDelete(element.id)">
+        <mat-icon color="accent">delete_forever</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+
+        <div class="example-element-description" fxFlex>
+          <mat-list>
+            <mat-list-item><strong>Title:</strong> &nbsp;{{element.title}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item><strong>Company Name:</strong> &nbsp;{{element.companyName}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item><strong>NIP: </strong> &nbsp;{{element.companyNIP}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item><strong>Company Address: </strong>&nbsp;{{element.companyAddress}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item><strong>Company zipCode: </strong>&nbsp;{{element.zipCode}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item><strong>Date: </strong>&nbsp;{{element.date | date:'dd-MM-yyyy'}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item><strong>Description: </strong></mat-list-item>
+            {{element.description}}
+            <mat-divider></mat-divider>
+            <mat-list-item><strong>Brutto:</strong> &nbsp;{{element.priceBrutto}}&nbsp;PLN</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item><strong>Netto:</strong>&nbsp; {{element.priceNetto}}&nbsp;PLN</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item><strong>VAT:</strong> &nbsp;{{element.vat}}%</mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+          <br>
+          <button mat-raised-button color="primary" (click)="downloadImage(element.image)">Download Invoice</button>
+        </div>
+        <div class="example-element-diagram" fxFlex>
+          <a routerLink="{{'/invoice/'+element.slug}}">
+            <div class="image-container">
+              <img *ngIf="!element.image" src="/assets/invoice.gif" mat-card-md-image width="700" height="700"
+                   alt="invoice-def">
+              <img *ngIf="element.image" src="{{'/api/data/invoiceImage/'+ element?.image}}" mat-card-md-image
+                   width="100%" height="100%" alt="invoice-image">
+            </div>
+          </a>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4" *ngIf="dataSource">No data matching the filter "{{input.value}}"</td>
+  </tr>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>

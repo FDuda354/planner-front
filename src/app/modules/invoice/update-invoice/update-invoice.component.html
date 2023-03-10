@@ -1,0 +1,123 @@
+<h1>Update Invoice</h1>
+
+
+<form [formGroup]="invoiceForm" fxLayout="column" (submit)="submit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput placeholder="Title" formControlName="title">
+    <div *ngIf="title?.invalid && (title?.dirty || title?.touched)">
+      <mat-error *ngIf="title?.errors?.['required']">title name is required</mat-error>
+      <mat-error *ngIf="title?.errors?.['minlength']">title name must be at least 3 characters long</mat-error>
+      <mat-error *ngIf="title?.errors?.['maxlength']">title name must be at most 200 characters long</mat-error>
+    </div>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Friendly URL</mat-label>
+    <input matInput placeholder="Input URL" formControlName="slug">
+    <div *ngIf="slug?.invalid && (slug?.dirty || slug?.touched)">
+      <mat-error *ngIf="slug?.errors?.['required']">URL is required</mat-error>
+      <mat-error *ngIf="slug?.errors?.['minlength']">URL must be at least 3 characters long</mat-error>
+      <mat-error *ngIf="slug?.errors?.['maxlength']">URL must be at most 255 characters long</mat-error>
+    </div>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Company Name</mat-label>
+    <input matInput placeholder="Company Name" formControlName="companyName">
+    <div *ngIf="companyName?.invalid && (companyName?.dirty || companyName?.touched)">
+      <mat-error *ngIf="companyName?.errors?.['required']">companyName name is required</mat-error>
+      <mat-error *ngIf="companyName?.errors?.['minlength']">companyName name must be at least 3 characters long
+      </mat-error>
+      <mat-error *ngIf="companyName?.errors?.['maxlength']">companyName name must be at most 200 characters long
+      </mat-error>
+    </div>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>zipCode</mat-label>
+    <input matInput placeholder="ZipCode" formControlName="zipCode">
+    <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)">
+      <mat-error *ngIf="zipCode?.errors?.['required']">street is required</mat-error>
+      <mat-error *ngIf="zipCode?.errors?.['pattern']">street format is not correct</mat-error>
+    </div>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Company Address</mat-label>
+    <input matInput placeholder="Company Address" formControlName="companyAddress">
+    <div *ngIf="companyAddress?.invalid && (companyAddress?.dirty || companyAddress?.touched)">
+      <mat-error *ngIf="companyAddress?.errors?.['required']">companyName name is required</mat-error>
+      <mat-error *ngIf="companyAddress?.errors?.['minlength']">companyName name must be at least 3 characters long
+      </mat-error>
+      <mat-error *ngIf="companyAddress?.errors?.['maxlength']">companyName name must be at most 200 characters long
+      </mat-error>
+    </div>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Company NIP</mat-label>
+    <input matInput placeholder="Company NIP" formControlName="companyNIP">
+    <div *ngIf="companyNIP?.invalid && (companyNIP?.dirty || companyNIP?.touched)">
+      <mat-error *ngIf="companyNIP?.errors?.['required']">companyNIP name is required</mat-error>
+      <mat-error *ngIf="companyNIP?.errors?.['minlength'] || companyNIP?.errors?.['maxlength'] ">companyNIP name must be
+        at 10 characters long
+      </mat-error>
+      <mat-error *ngIf="companyNIP?.errors?.['pattern']"> input must be number</mat-error>
+
+    </div>
+  </mat-form-field>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="dp3" [disabled]="true" formControlName="date">
+      <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+      <mat-datepicker #dp3 [disabled]="false"></mat-datepicker>
+    </mat-form-field>
+  </p>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput placeholder="Description" formControlName="description">
+    <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+      <mat-error *ngIf="description?.errors?.['required']">description name is required</mat-error>
+      <mat-error *ngIf="description?.errors?.['minlength']">description name must be at least 3 characters long
+      </mat-error>
+      <mat-error *ngIf="description?.errors?.['maxlength']">description name must be at most 1000 characters long
+      </mat-error>
+    </div>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>VAT</mat-label>
+    <input matInput placeholder="VAT" formControlName="vat">
+    <div *ngIf="vat?.invalid && (vat?.dirty || vat?.touched)">
+      <mat-error *ngIf="vat?.errors?.['required']">vat name is required</mat-error>
+      <mat-error *ngIf="vat?.errors?.['min']">min is 0</mat-error>
+      <mat-error *ngIf="vat?.errors?.['max']">max number is 100</mat-error>
+      <mat-error *ngIf="vat?.errors?.['pattern']">input must be number (0-100)</mat-error>
+    </div>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Price Brutto</mat-label>
+    <input matInput placeholder="Price Brutto" formControlName="priceBrutto">
+    <div *ngIf="priceBrutto?.invalid && (priceBrutto?.dirty || priceBrutto?.touched)">
+      <mat-error *ngIf="priceBrutto?.errors?.['required']">priceBrutto name is required</mat-error>
+      <mat-error *ngIf="priceBrutto?.errors?.['min']">Price must be greater than 0</mat-error>
+      <mat-error *ngIf="priceBrutto?.errors?.['pattern']">Price must be a number</mat-error>
+    </div>
+  </mat-form-field>
+
+
+  <div fxLayoutAlign="end">
+    <button mat-button color="warn" (click)="onCancel()">Cancel</button>
+    <button mat-button color="primary" [disabled]="!invoiceForm.valid">Update</button>
+  </div>
+</form>
+<img *ngIf="image" src="{{'/api/data/invoiceImage/'+image}}" width="200"/>
+<form [formGroup]="imageForm" (submit)="uploadFile()">
+  <input type="file" [accept]="requiredFileTypes" (change)="onFileChange($event)">
+  <button mat-flat-button color="primary">Upload New File</button>
+</form>

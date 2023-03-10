@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SidebarCategory} from "./model/sidebarCategory";
+
 
 @Component({
   selector: 'app-sidebar',
@@ -8,11 +8,9 @@ import {SidebarCategory} from "./model/sidebarCategory";
 })
 export class SidebarComponent implements OnInit {
 
-  categories: Array<SidebarCategory> = [];
 
   constructor() {
   }
-
 
 
   ngOnInit(): void {

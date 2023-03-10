@@ -14,7 +14,6 @@ import {
 } from "../../modules/admin/common/component/admin-confirm-dialog/admin-confirm-dialog.component";
 
 
-
 @NgModule({
   declarations: [
     FullpageadminComponent,
