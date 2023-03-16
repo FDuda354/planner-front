@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Invoice} from "./model/invoice";
 import {UploadResponse} from "../common/model/uploadResponse";
+import {FInvoice} from "./invoice-factory/model/fInvoice";
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,13 @@ export class InvoiceService {
 
   downloadInvoice(image: string): Observable<any> {
     return this.http.get(`/api/download/invoiceImage/${image}`,
+      {responseType: 'blob', observe: 'response'}
+    );
+
+  }
+
+  generateInvoice(invoice: FInvoice): Observable<any> {
+    return this.http.post(`/api/invoice/create`, invoice,
       {responseType: 'blob', observe: 'response'}
     );
 

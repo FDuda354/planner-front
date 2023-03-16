@@ -1,1 +1,30 @@
-<p>calendar works!</p>
+<div class="calendar">
+  <div class="header">
+    <button (click)="prevMonth()">Prev</button>
+    <div class="month">{{ monthYear }}</div>
+    <button (click)="nextMonth()">Next</button>
+    <select [(ngModel)]="selectedYear" (ngModelChange)="onChangeYear($event)">
+      <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+    </select>
+    <button (click)="goToCurrentMonth()">Current Month</button>
+  </div>
+  <div class="weekdays">
+    <div class="weekday">Monday</div>
+    <div class="weekday">Tuesday</div>
+    <div class="weekday">Wednesday</div>
+    <div class="weekday">Thursday</div>
+    <div class="weekday">Friday</div>
+    <div class="weekday">Saturday</div>
+    <div class="weekday">Sunday</div>
+
+  </div>
+  <div class="days">
+    <div *ngFor="let day of days" class="day" (click)="onDayClick(day)">
+      <div class="number">{{ day.number }}</div>
+      <div class="data">
+        <div *ngFor="let item of day.data">{{ item }}</div>
+      </div>
+    </div>
+  </div>
+
+</div>

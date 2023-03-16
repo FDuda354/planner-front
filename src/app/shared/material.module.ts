@@ -18,7 +18,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [],
@@ -41,7 +42,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatStepperModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSidenavModule,
+    MatTabsModule
 
   ],
   exports: [
@@ -62,7 +65,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatStepperModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSidenavModule,
+    MatTabsModule
   ],
   providers: [
     {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}

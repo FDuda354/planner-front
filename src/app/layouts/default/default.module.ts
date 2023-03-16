@@ -6,7 +6,7 @@ import {RouterModule} from "@angular/router";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {SharedModule} from "../../shared/shared.module";
 
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {ReplacePipe} from "../../modules/common/pipe/preplacePipe";
 import {CalendarComponent} from "../../modules/calendar/calendar.component";
@@ -18,6 +18,7 @@ import {AddtaskComponent} from "../../modules/todolist/addtask/addtask.component
 import {UpdatetaskComponent} from "../../modules/todolist/updatetask/updatetask.component";
 import {UpdateInvoiceComponent} from "../../modules/invoice/update-invoice/update-invoice.component";
 import {AddInvoiceComponent} from "../../modules/invoice/add-invoice/add-invoice.component";
+import {InvoiceFactoryComponent} from "../../modules/invoice/invoice-factory/invoice-factory.component";
 
 
 @NgModule({
@@ -32,16 +33,18 @@ import {AddInvoiceComponent} from "../../modules/invoice/add-invoice/add-invoice
     AddtaskComponent,
     UpdatetaskComponent,
     UpdateInvoiceComponent,
-    AddInvoiceComponent
+    AddInvoiceComponent,
+    InvoiceFactoryComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FlexLayoutModule,
-    SharedModule,
-    ReactiveFormsModule,
-    MatSortModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        FlexLayoutModule,
+        SharedModule,
+        ReactiveFormsModule,
+        MatSortModule,
+        FormsModule
+    ]
 })
 export class DefaultModule {
 }
