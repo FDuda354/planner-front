@@ -6,6 +6,7 @@
   <div fxLayoutAlign="start center" fxLayoutGap="15">
     <button mat-raised-button color="primary" routerLink="">Home</button>
     <span></span>
+
     <div *ngIf="isLogged" fxLayoutGap="10">
       <button mat-raised-button color="primary" routerLink="/login">
 
@@ -17,5 +18,6 @@
     <div *ngIf="!isLogged">
       <button mat-raised-button color="primary" routerLink="/login">Login</button>
     </div>
+
   </div>
 </header>

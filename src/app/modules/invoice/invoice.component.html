@@ -90,7 +90,9 @@
             <mat-divider></mat-divider>
           </mat-list>
           <br>
-          <button  mat-raised-button color="primary" [disabled]="!element.image" (click)="downloadImage(element.image)">Download Invoice</button>
+          <button mat-raised-button color="primary" [disabled]="!element.image" (click)="downloadImage(element.image)">
+            Download Invoice
+          </button>
         </div>
         <div class="example-element-diagram" fxFlex>
           <a routerLink="{{'/invoice/'+element.slug}}">

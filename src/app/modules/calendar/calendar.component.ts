@@ -1,8 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {EventDialogComponent} from "./event-dialog/event-dialog.component";
+import {UserEvent} from "./model/userEvent";
+import {CalendarService} from "./calendar.service";
+import {AdminConfirmDialogService} from "../admin/common/service/admin-confirm-dialog.service";
+
 
 export interface Day {
   number: string;
-  data: string;
+  data: UserEvent[];
   isCurrentMonth: boolean;
 }
 
@@ -12,20 +18,26 @@ export interface CalendarComponent {
   selectedYear: number;
   selectedMonth: number;
   years: number[];
+
   onDayClick(day: Day): void;
+
   onChangeYear(year: number): void;
+
   prevMonth(): void;
+
   nextMonth(): void;
+
   goToCurrentMonth(): void;
 }
+
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit{
-  @Input() data!: any[];
+export class CalendarComponent implements OnInit {
+  @Input() data = new Array<UserEvent>();
 
   monthYear!: string;
   days!: Day[];
@@ -33,7 +45,11 @@ export class CalendarComponent implements OnInit{
   selectedMonth: number;
   years: number[];
 
-  constructor() {
+  constructor(
+    public dialog: MatDialog,
+    private calendarService: CalendarService,
+    private adminConfirmDialogService: AdminConfirmDialogService,
+  ) {
     const currentDate = new Date();
     this.selectedYear = currentDate.getFullYear();
     this.selectedMonth = currentDate.getMonth();
@@ -43,9 +59,37 @@ export class CalendarComponent implements OnInit{
     this.generateCalendar(this.selectedYear, this.selectedMonth);
   }
 
+  ngOnInit() {
+    this.calendarService.getEvents().subscribe((data: UserEvent[]) => {
+      this.data = data.map(event => ({
+        ...event,
+        date: new Date(event.date)
+      }));
+      this.generateCalendar(this.selectedYear, this.selectedMonth);
+    });
+
+  }
+
   onDayClick(day: Day): void {
     if (day.isCurrentMonth) {
-      console.log(`Clicked on day ${day.number}`);
+      const selectedDate = new Date(this.selectedYear, this.selectedMonth, parseInt(day.number));
+      const dialogRef = this.dialog.open(EventDialogComponent, {
+        data: {selectedDate}
+      });
+      dialogRef.afterClosed().subscribe((result: UserEvent) => {
+        if (result) {
+
+          this.calendarService.addEvent(result).subscribe((data: UserEvent) => {
+              this.data.push({
+                ...result,
+                id: data.id,
+                date: new Date(result.date)
+              });
+              this.generateCalendar(this.selectedYear, this.selectedMonth);
+            }
+          );
+        }
+      });
     }
   }
 
@@ -92,23 +136,54 @@ export class CalendarComponent implements OnInit{
 
     for (let i = 0; i < 42; i++) {
       if (i < firstDayOfMonth) {
+        let events: UserEvent[] = [];
+        this.data.forEach(element => {
+          if (
+            element.date.getFullYear() === year &&
+            element.date.getMonth() === month - 1 &&
+            element.date.getDate() === lastMonthDayNumber
+          ) {
+            events.push(element);
+          }
+        });
         days.push({
           number: lastMonthDayNumber.toString(),
-          data: '',
+          data: events,
           isCurrentMonth: false
         });
         lastMonthDayNumber++;
       } else if (i >= firstDayOfMonth && dayNumber <= daysInMonth) {
+        let events: UserEvent[] = [];
+        this.data.forEach(element => {
+          if (
+            element.date.getFullYear() === year &&
+            element.date.getMonth() === month &&
+            element.date.getDate() === dayNumber
+          ) {
+            events.push(element);
+
+          }
+        });
         days.push({
           number: dayNumber.toString(),
-          data: '',
+          data: events,
           isCurrentMonth: true
         });
         dayNumber++;
       } else {
+        let events: UserEvent[] = [];
+        this.data.forEach(element => {
+          if (
+            element.date.getFullYear() === year &&
+            element.date.getMonth() === month + 1 &&
+            element.date.getDate() === nextMonthDayNumber
+          ) {
+            events.push(element);
+          }
+        });
         days.push({
           number: nextMonthDayNumber.toString(),
-          data: '',
+          data: events,
           isCurrentMonth: false
         });
         nextMonthDayNumber++;
@@ -134,14 +209,18 @@ export class CalendarComponent implements OnInit{
     this.days = days;
   }
 
-  ngOnInit() {
-    this.data.forEach(element => {
-      this.days.forEach(day => {
-        if (day.number === element.day && day.isCurrentMonth) {
-          day.data = element.data;
+
+  confirmDelete(id: number, event: MouseEvent) {
+    event.stopPropagation();
+    this.adminConfirmDialogService.openDialog("delete this event?")
+      .afterClosed()
+      .subscribe(confirmed => {
+        if (confirmed) {
+          this.calendarService.deleteEvent(id).subscribe(() => {
+            this.data = this.data.filter(event => event.id !== id);
+            this.generateCalendar(this.selectedYear, this.selectedMonth);
+          });
         }
       });
-    });
-
   }
 }

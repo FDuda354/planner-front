@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Add Event</h2>
+<mat-dialog-content>
+  <form>
+    <mat-form-field>
+      <input matInput placeholder="Title" [(ngModel)]="userEvent.name" name="name">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Date" [(ngModel)]="userEvent.date" name="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="warn" mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" (click)="onAddEvent()">Add</button>
+</mat-dialog-actions>

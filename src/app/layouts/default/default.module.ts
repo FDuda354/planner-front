@@ -19,7 +19,8 @@ import {UpdatetaskComponent} from "../../modules/todolist/updatetask/updatetask.
 import {UpdateInvoiceComponent} from "../../modules/invoice/update-invoice/update-invoice.component";
 import {AddInvoiceComponent} from "../../modules/invoice/add-invoice/add-invoice.component";
 import {InvoiceFactoryComponent} from "../../modules/invoice/invoice-factory/invoice-factory.component";
-
+import {EventDialogComponent} from "../../modules/calendar/event-dialog/event-dialog.component";
+import {UpdateEventDialogComponent} from "../../modules/calendar/update-event-dialog/update-event-dialog.component";
 
 @NgModule({
   declarations: [
@@ -34,17 +35,23 @@ import {InvoiceFactoryComponent} from "../../modules/invoice/invoice-factory/inv
     UpdatetaskComponent,
     UpdateInvoiceComponent,
     AddInvoiceComponent,
-    InvoiceFactoryComponent
+    InvoiceFactoryComponent,
+    EventDialogComponent,
+    UpdateEventDialogComponent
   ],
-    imports: [
-        CommonModule,
-        RouterModule,
-        FlexLayoutModule,
-        SharedModule,
-        ReactiveFormsModule,
-        MatSortModule,
-        FormsModule
-    ]
+  imports: [
+    CommonModule,
+    RouterModule,
+    FlexLayoutModule,
+    SharedModule,
+    ReactiveFormsModule,
+    MatSortModule,
+    FormsModule
+  ],
+  entryComponents: [
+    EventDialogComponent,
+    UpdateEventDialogComponent
+  ],
 })
 export class DefaultModule {
 }

@@ -1,18 +1,18 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {InvoiceFactoryComponent} from './invoice-factory.component';
+import {EventDialogComponent} from './event-dialog.component';
 
-describe('InvoiceFactoryComponent', () => {
-  let component: InvoiceFactoryComponent;
-  let fixture: ComponentFixture<InvoiceFactoryComponent>;
+describe('EventDialogComponent', () => {
+  let component: EventDialogComponent;
+  let fixture: ComponentFixture<EventDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InvoiceFactoryComponent]
+      declarations: [EventDialogComponent]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(InvoiceFactoryComponent);
+    fixture = TestBed.createComponent(EventDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

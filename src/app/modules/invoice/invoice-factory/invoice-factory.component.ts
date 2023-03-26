@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {InvoiceService} from "../invoice.service";
@@ -82,7 +82,7 @@ export class InvoiceFactoryComponent implements OnInit {
   }
 
   addItem() {
-    if (this.items.length < 10) {
+    if (this.items.length < 10 && this.invoiceItemsForm.valid) {
       const item = {
         productName: this.productName?.value,
         productQuantity: this.productQuantity?.value,

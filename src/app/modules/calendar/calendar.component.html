@@ -22,8 +22,15 @@
     <div *ngFor="let day of days" class="day" (click)="onDayClick(day)">
       <div class="number">{{ day.number }}</div>
       <div class="data">
-        <div *ngFor="let item of day.data">{{ item }}</div>
+        <div *ngFor="let item of day.data">
+          <a routerLink="{{'/invoices'}}">{{ item.name }}</a>
+          <button mat-icon-button (click)="confirmDelete(item.id, $event)">
+            <mat-icon color="accent" class="custom-icon">delete_forever</mat-icon>
+          </button>
+
+        </div>
       </div>
+
     </div>
   </div>
 

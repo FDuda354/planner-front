@@ -6,6 +6,7 @@ import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import {RouterModule} from "@angular/router";
 import {FlexModule} from "@angular/flex-layout";
 import {MaterialModule} from "./material.module";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {MaterialModule} from "./material.module";
     CommonModule,
     RouterModule,
     FlexModule,
-    MaterialModule
+    MaterialModule,
+    MatToolbarModule
 
   ],
   exports: [
