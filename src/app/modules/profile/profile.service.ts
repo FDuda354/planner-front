@@ -14,6 +14,6 @@ export class ProfileService {
 
 
   changePassword(passwordObject: any): Observable<any> {
-    return this.http.post("/api/profile/changePassword", passwordObject);
+    return this.http.post("https://planerbackend.dudios.pl/profile/changePassword", passwordObject);
   }
 }

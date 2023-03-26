@@ -14,39 +14,39 @@ export class InvoiceService {
   }
 
   getInvoices(): Observable<Array<Invoice>> {
-    return this.http.get<Array<Invoice>>('/api/invoices');
+    return this.http.get<Array<Invoice>>('https://planerbackend.dudios.pl/invoices');
   }
 
   uploadImage(formData: FormData): Observable<UploadResponse> {
-    return this.http.post<UploadResponse>("/api/invoice/upload-image", formData);
+    return this.http.post<UploadResponse>("https://planerbackend.dudios.pl/invoice/upload-image", formData);
   }
 
   saveNewInvoice(invoice: Invoice): Observable<Invoice> {
-    return this.http.post<Invoice>("/api/invoice", invoice);
+    return this.http.post<Invoice>("https://planerbackend.dudios.pl/invoice", invoice);
 
   }
 
   deleteInvoiceById(id: number) {
-    return this.http.delete("/api/invoice/" + id);
+    return this.http.delete("https://planerbackend.dudios.pl/invoice/" + id);
   }
 
   getInvoiceBySlug(slug: string): Observable<Invoice> {
-    return this.http.get<Invoice>("/api/invoice/" + slug);
+    return this.http.get<Invoice>("https://planerbackend.dudios.pl/invoice/" + slug);
   }
 
   updateInvoice(slug: string | null, invoice: Invoice): Observable<Invoice> {
-    return this.http.put<Invoice>("/api/invoice/" + slug, invoice);
+    return this.http.put<Invoice>("https://planerbackend.dudios.pl/invoice/" + slug, invoice);
   }
 
   downloadInvoice(image: string): Observable<any> {
-    return this.http.get(`/api/download/invoiceImage/${image}`,
+    return this.http.get(`https://planerbackend.dudios.pl/download/invoiceImage/${image}`,
       {responseType: 'blob', observe: 'response'}
     );
 
   }
 
   generateInvoice(invoice: FInvoice): Observable<any> {
-    return this.http.post(`/api/invoice/create`, invoice,
+    return this.http.post(`https://planerbackend.dudios.pl/invoice/create`, invoice,
       {responseType: 'blob', observe: 'response'}
     );
 

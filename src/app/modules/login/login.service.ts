@@ -13,18 +13,18 @@ export class LoginService {
   }
 
   register(registerForm: any): Observable<any> {
-    return this.http.post('/api/register', registerForm);
+    return this.http.post('https://planerbackend.dudios.pl/register', registerForm);
   }
 
   login(loginForm: any): Observable<any> {
-    return this.http.post('/api/login', loginForm);
+    return this.http.post('https://planerbackend.dudios.pl/login', loginForm);
   }
 
   resetPassword(emailObject: any): Observable<any> {
-    return this.http.post("/api/lostPassword", emailObject);
+    return this.http.post("https://planerbackend.dudios.pl/lostPassword", emailObject);
   }
 
   changePassword(passwordObject: any): Observable<any> {
-    return this.http.post("/api/changePassword", passwordObject);
+    return this.http.post("https://planerbackend.dudios.pl/changePassword", passwordObject);
   }
 }

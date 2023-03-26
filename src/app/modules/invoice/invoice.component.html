@@ -99,7 +99,7 @@
             <div class="image-container">
               <img *ngIf="!element.image" src="/assets/invoice.gif" mat-card-md-image width="700" height="700"
                    alt="invoice-def">
-              <img *ngIf="element.image" src="{{'/api/data/invoiceImage/'+ element?.image}}" mat-card-md-image
+              <img *ngIf="element.image" src="{{'https://planerbackend.dudios.pl/data/invoiceImage/'+ element?.image}}" mat-card-md-image
                    width="100%" height="100%" alt="invoice-image">
             </div>
           </a>

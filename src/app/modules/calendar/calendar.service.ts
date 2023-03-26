@@ -12,20 +12,20 @@ export class CalendarService {
   }
 
   getEvents(): Observable<UserEvent[]> {
-    return this.http.get<UserEvent[]>('/api/events');
+    return this.http.get<UserEvent[]>('https://planerbackend.dudios.pl/events');
 
   }
 
   addEvent(result: UserEvent): Observable<UserEvent> {
-    return this.http.post<UserEvent>('/api/event', result);
+    return this.http.post<UserEvent>('https://planerbackend.dudios.pl/event', result);
 
   }
 
   deleteEvent(eventId: number) {
-    return this.http.delete(`/api/event/${eventId}`);
+    return this.http.delete(`https://planerbackend.dudios.pl/event/${eventId}`);
   }
 
   updateEvent(result: UserEvent): Observable<UserEvent>  {
-    return this.http.put<UserEvent>(`/api/event`, result);
+    return this.http.put<UserEvent>(`https://planerbackend.dudios.pl/event`, result);
   }
 }

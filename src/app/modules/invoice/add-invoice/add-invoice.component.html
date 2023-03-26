@@ -114,7 +114,7 @@
     <button mat-button color="primary" [disabled]="!invoiceForm.valid">Add</button>
   </div>
 </form>
-<img *ngIf="image" src="{{'/api/data/invoiceImage/'+image}}" width="200"/>
+<img *ngIf="image" src="{{'https://planerbackend.dudios.pl/data/invoiceImage/'+image}}" width="200"/>
 <form [formGroup]="imageForm" (submit)="uploadFile()">
   <input type="file" [accept]="requiredFileTypes" (change)="onFileChange($event)">
   <button mat-flat-button color="primary">Upload File</button>
