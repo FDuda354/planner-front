@@ -31,26 +31,26 @@ export class InvoiceFactoryComponent implements OnInit {
   ngOnInit(): void {
     this.items = [];
     this.invoiceForm = this.formBuilder.group({
-      companyName: ['HERCU PANUEMATIC', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
-      companyZipCode: ['12-231', [Validators.required, Validators.pattern("^[0-9]{2}-[0-9]{3}$")]],
-      companyAddress: ['kwiatowa 13', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
-      companyNIP: ['1234506987', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/), Validators.minLength(10), Validators.maxLength(10)]],
-      invoiceId: ['1234', [Validators.required, Validators.minLength(3), Validators.maxLength(200), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
-      vat: ['23', [Validators.required, Validators.min(0), Validators.max(100), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
-      companyBankNumber: ['12331', [Validators.required, Validators.min(0), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
-      paymentMethod: ['Przelew', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
+      companyName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
+      companyZipCode: ['', [Validators.required, Validators.pattern("^[0-9]{2}-[0-9]{3}$")]],
+      companyAddress: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
+      companyNIP: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/), Validators.minLength(10), Validators.maxLength(10)]],
+      invoiceId: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      vat: ['', [Validators.required, Validators.min(0), Validators.max(100), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      companyBankNumber: ['', [Validators.required, Validators.min(0), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      paymentMethod: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
 
-      customerCompanyName: ['FILIP PANUEMATIC', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
-      customerZipCode: ['35-231', [Validators.required, Validators.pattern("^[0-9]{2}-[0-9]{3}$")]],
-      customerCompanyAddress: ['witolda 13', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
-      customerCompanyNIP: ['2234502987', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/), Validators.minLength(10), Validators.maxLength(10)]],
+      customerCompanyName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
+      customerZipCode: ['', [Validators.required, Validators.pattern("^[0-9]{2}-[0-9]{3}$")]],
+      customerCompanyAddress: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
+      customerCompanyNIP: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/), Validators.minLength(10), Validators.maxLength(10)]],
 
     });
 
     this.invoiceItemsForm = this.formBuilder.group({
-      productPriceBrutto: ['22331', [Validators.required, Validators.min(0), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
-      productName: ['Rower', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
-      productQuantity: ['1', [Validators.required, Validators.min(1), Validators.max(2000000000), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      productPriceBrutto: ['', [Validators.required, Validators.min(0), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      productName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
+      productQuantity: ['', [Validators.required, Validators.min(1), Validators.max(2000000000), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
       delete: ['']
     });
 

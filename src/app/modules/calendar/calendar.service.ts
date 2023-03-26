@@ -24,4 +24,8 @@ export class CalendarService {
   deleteEvent(eventId: number) {
     return this.http.delete(`/api/event/${eventId}`);
   }
+
+  updateEvent(result: UserEvent): Observable<UserEvent>  {
+    return this.http.put<UserEvent>(`/api/event`, result);
+  }
 }

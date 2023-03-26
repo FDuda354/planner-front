@@ -50,7 +50,7 @@ const routes: Routes = [
   {
     path: '', component: FullpageadminComponent, children: [
       {path: '', component: HomeComponent},
-      {path: 'admin', component: AdminComponent, canActivate: [AdminAuthGuard]},
+     // {path: 'admin', component: AdminComponent, canActivate: [AdminAuthGuard]},
 
     ]
   },

@@ -20,7 +20,6 @@ import {UpdateInvoiceComponent} from "../../modules/invoice/update-invoice/updat
 import {AddInvoiceComponent} from "../../modules/invoice/add-invoice/add-invoice.component";
 import {InvoiceFactoryComponent} from "../../modules/invoice/invoice-factory/invoice-factory.component";
 import {EventDialogComponent} from "../../modules/calendar/event-dialog/event-dialog.component";
-import {UpdateEventDialogComponent} from "../../modules/calendar/update-event-dialog/update-event-dialog.component";
 
 @NgModule({
   declarations: [
@@ -36,8 +35,7 @@ import {UpdateEventDialogComponent} from "../../modules/calendar/update-event-di
     UpdateInvoiceComponent,
     AddInvoiceComponent,
     InvoiceFactoryComponent,
-    EventDialogComponent,
-    UpdateEventDialogComponent
+    EventDialogComponent
   ],
   imports: [
     CommonModule,
@@ -49,8 +47,7 @@ import {UpdateEventDialogComponent} from "../../modules/calendar/update-event-di
     FormsModule
   ],
   entryComponents: [
-    EventDialogComponent,
-    UpdateEventDialogComponent
+    EventDialogComponent
   ],
 })
 export class DefaultModule {

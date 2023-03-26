@@ -91,6 +91,8 @@ select:focus {
   height: 70px;
   margin: 5px;
   position: relative;
+  overflow: hidden; /* Dodaj to, aby ukryć zawartość wychodzącą poza kafelek */
+
 }
 
 .number {
@@ -100,18 +102,23 @@ select:focus {
   position: absolute;
   top: 5px;
   left: 5px;
+
 }
 
 
 .data {
   font-size: 12px;
+  width: 100%;
   color: #333;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 5px;
+  padding-top: 30px;
+  height: 100%; /* Dodaj to, aby ograniczyć wysokość do wysokości kafelka */
+  overflow-y: auto; /* Dodaj to, aby dodać pasek przewijania, gdy potrzebny */
+  overflow-x: hidden; /* Dodaj to, aby ukryć zawartość wychodzącą poza kafelek */
 }
 
 .data div {
@@ -119,5 +126,22 @@ select:focus {
 }
 
 .custom-icon {
-  font-size: 20px;
+  font-size: 15px;
+}
+.edit-event-element {
+  width: auto; /* Ustaw szerokość na auto, aby przycisk dopasował się do zawartości */
+  min-width: 50px; /* Ustaw minimalną szerokość przycisku */
+  max-width: 100%; /* Ustaw maksymalną szerokość przycisku, aby nie wychodził poza kafelkę */
+  height: 15px; /* Ustaw wysokość przycisku */
+  font-size: 9px; /* Zmniejsz rozmiar czcionki */
+  /* Zmniejsz grubosc czcionki */
+  font-weight: 400;
+  padding: 0 2px; /* Ustaw padding dla przycisku */
+  box-sizing: border-box; /* Upewnij się, że padding nie powiększa przycisku */
+  white-space: nowrap; /* Zapobiegaj zawijaniu tekstu */
+  overflow: hidden; /* Ukryj zawartość wychodzącą poza przycisk */
+  text-overflow: ellipsis; /* Dodaj trzykropek, gdy tekst przekroczy szerokość przycisku */
+  display: flex; /* Dodaj to, aby użyć flexboxa */
+  align-items: center; /* Dodaj to, aby wyśrodkować tekst w pionie */
+  justify-content: center;
 }

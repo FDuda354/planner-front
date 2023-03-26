@@ -22,8 +22,10 @@
     <div *ngFor="let day of days" class="day" (click)="onDayClick(day)">
       <div class="number">{{ day.number }}</div>
       <div class="data">
-        <div *ngFor="let item of day.data">
-          <a routerLink="{{'/invoices'}}">{{ item.name }}</a>
+        <div *ngFor="let item of day.data" fxFlex class="event-element">
+
+          <button mat-flat-button color="warn" class="edit-event-element">{{ item.name }}</button>
+
           <button mat-icon-button (click)="confirmDelete(item.id, $event)">
             <mat-icon color="accent" class="custom-icon">delete_forever</mat-icon>
           </button>

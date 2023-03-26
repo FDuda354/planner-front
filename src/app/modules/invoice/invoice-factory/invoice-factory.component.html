@@ -176,12 +176,12 @@
 
       <mat-form-field appearance="fill">
         <mat-label>productName</mat-label>
-        <input matInput placeholder="productName" formControlName="productName">
+        <input matInput placeholder="product Name" formControlName="productName">
         <div *ngIf="productName?.invalid && (productName?.dirty || productName?.touched)">
-          <mat-error *ngIf="productName?.errors?.['required']">productName name is required</mat-error>
-          <mat-error *ngIf="productName?.errors?.['minlength']">productName name must be at least 3 characters long
+          <mat-error *ngIf="productName?.errors?.['required']">product Name name is required</mat-error>
+          <mat-error *ngIf="productName?.errors?.['minlength']">product Name name must be at least 3 characters long
           </mat-error>
-          <mat-error *ngIf="productName?.errors?.['maxlength']">productName name must be at most 200 characters long
+          <mat-error *ngIf="productName?.errors?.['maxlength']">product Name name must be at most 200 characters long
           </mat-error>
         </div>
       </mat-form-field>
